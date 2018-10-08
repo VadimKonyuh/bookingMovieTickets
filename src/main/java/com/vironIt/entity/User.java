@@ -1,5 +1,6 @@
 package com.vironIt.entity;
 
+
 public class User {
 
     private long id;
@@ -9,6 +10,7 @@ public class User {
     private String last_name;
     private String email;
     private String role;
+
 
     public long getId() {
         return id;
@@ -62,7 +64,29 @@ public class User {
         return role;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setRole(String role) { this.role = role; }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", first_name='" + first_name + '\'' +
+                ", last_name='" + last_name + '\'' +
+                ", email='" + email + '\'' +
+                ", role='" + role + '\'' +
+                '}';
+    }
+
 }

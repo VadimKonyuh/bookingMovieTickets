@@ -7,7 +7,7 @@
     username="postgres"
     password="postgres"
     driverClassName="org.postgresql.Driver"
-    url="jdbc:postgresql://хост:3306/booking_cinema_tickets?autoReconnect=true"
+    url="jdbc:postgresql://host:3306/booking_cinema_tickets?autoReconnect=true"
     validationQuery="select 1"
     maxActive="10"
     maxIdle="4"/>
