@@ -67,13 +67,31 @@ public class User {
     public void setRole(String role) { this.role = role; }
 
     @Override
-    public int hashCode() {
-        return super.hashCode();
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        if (id != user.id) return false;
+        if (!login.equals(user.login)) return false;
+        if (!password.equals(user.password)) return false;
+        if (!first_name.equals(user.first_name)) return false;
+        if (!last_name.equals(user.last_name)) return false;
+        if (!email.equals(user.email)) return false;
+        return role != null ? role.equals(user.role) : user.role == null;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
+    public int hashCode() {
+        int result = (int) (id ^ (id >>> 32));
+        result = 31 * result + login.hashCode();
+        result = 31 * result + password.hashCode();
+        result = 31 * result + first_name.hashCode();
+        result = 31 * result + last_name.hashCode();
+        result = 31 * result + email.hashCode();
+        result = 31 * result + (role != null ? role.hashCode() : 0);
+        return result;
     }
 
     @Override
@@ -88,5 +106,4 @@ public class User {
                 ", role='" + role + '\'' +
                 '}';
     }
-
 }

@@ -15,8 +15,8 @@
     </database>
     <schema id="5" parent="2" name="public">
       <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2018-10-08.17:13:10.618</IntrospectionTimestamp>
-      <IntrospectionStateNumber>712</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2018-10-09.10:23:05.541</IntrospectionTimestamp>
+      <IntrospectionStateNumber>719</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -60,257 +60,110 @@
       <StateNumber>672</StateNumber>
       <BelongsToColumn>1</BelongsToColumn>
     </sequence>
-    <sequence id="16" parent="5" name="genre_id_seq">
+    <sequence id="16" parent="5" name="cinema_id_seq">
+      <ObjectId>32914</ObjectId>
+      <StateNumber>717</StateNumber>
+      <BelongsToColumn>1</BelongsToColumn>
+    </sequence>
+    <sequence id="17" parent="5" name="genre_id_seq">
       <ObjectId>32899</ObjectId>
       <StateNumber>700</StateNumber>
       <BelongsToColumn>1</BelongsToColumn>
     </sequence>
-    <sequence id="17" parent="5" name="movie_id_seq">
+    <sequence id="18" parent="5" name="movie_id_seq">
       <ObjectId>32887</ObjectId>
       <StateNumber>697</StateNumber>
       <BelongsToColumn>1</BelongsToColumn>
     </sequence>
-    <sequence id="18" parent="5" name="place_cinema_id_seq">
+    <sequence id="19" parent="5" name="place_cinema_id_seq">
       <ObjectId>32868</ObjectId>
       <StateNumber>691</StateNumber>
       <BelongsToColumn>1</BelongsToColumn>
     </sequence>
-    <sequence id="19" parent="5" name="place_id_seq">
+    <sequence id="20" parent="5" name="place_id_seq">
       <ObjectId>32866</ObjectId>
       <StateNumber>691</StateNumber>
       <BelongsToColumn>1</BelongsToColumn>
     </sequence>
-    <sequence id="20" parent="5" name="seance_id_seq">
+    <sequence id="21" parent="5" name="seance_id_seq">
       <ObjectId>32878</ObjectId>
       <StateNumber>695</StateNumber>
       <BelongsToColumn>1</BelongsToColumn>
     </sequence>
-    <sequence id="21" parent="5" name="user_id_seq">
+    <sequence id="22" parent="5" name="user_id_seq">
       <ObjectId>32840</ObjectId>
       <StateNumber>676</StateNumber>
       <BelongsToColumn>1</BelongsToColumn>
     </sequence>
-    <table id="22" parent="5" name="booking">
-      <ObjectId>32823</ObjectId>
-      <StateNumber>690</StateNumber>
+    <table id="23" parent="5" name="cinema">
+      <ObjectId>32916</ObjectId>
+      <StateNumber>717</StateNumber>
     </table>
-    <table id="23" parent="5" name="genre">
+    <table id="24" parent="5" name="distribution">
+      <ObjectId>32880</ObjectId>
+      <StateNumber>715</StateNumber>
+    </table>
+    <table id="25" parent="5" name="genre">
       <ObjectId>32901</ObjectId>
       <StateNumber>700</StateNumber>
     </table>
-    <table id="24" parent="5" name="movie">
+    <table id="26" parent="5" name="movie">
       <ObjectId>32889</ObjectId>
       <StateNumber>697</StateNumber>
     </table>
-    <table id="25" parent="5" name="place">
+    <table id="27" parent="5" name="order">
+      <ObjectId>32823</ObjectId>
+      <StateNumber>719</StateNumber>
+    </table>
+    <table id="28" parent="5" name="seat">
       <ObjectId>32870</ObjectId>
-      <StateNumber>694</StateNumber>
+      <StateNumber>714</StateNumber>
     </table>
-    <table id="26" parent="5" name="seance">
-      <ObjectId>32880</ObjectId>
-      <StateNumber>695</StateNumber>
-    </table>
-    <table id="27" parent="5" name="users">
+    <table id="29" parent="5" name="user">
       <ObjectId>32806</ObjectId>
-      <StateNumber>712</StateNumber>
+      <StateNumber>713</StateNumber>
     </table>
-    <column id="28" parent="22" name="id">
+    <column id="30" parent="23" name="id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>680</StateNumber>
-      <SequenceName>booking_id_seq</SequenceName>
-      <DefaultExpression>nextval(&apos;booking_id_seq&apos;::regclass)</DefaultExpression>
+      <StateNumber>717</StateNumber>
+      <SequenceName>cinema_id_seq</SequenceName>
+      <DefaultExpression>nextval(&apos;cinema_id_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="29" parent="22" name="user_id">
-      <Position>2</Position>
-      <DataType>integer|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>672</StateNumber>
-      <SequenceName>booking_user_id_seq</SequenceName>
-    </column>
-    <column id="30" parent="22" name="seance_id">
-      <Position>3</Position>
-      <DataType>integer|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>684</StateNumber>
-      <SequenceName>booking_seance_id_seq</SequenceName>
-      <DefaultExpression>nextval(&apos;booking_seance_id_seq&apos;::regclass)</DefaultExpression>
-    </column>
-    <column id="31" parent="22" name="place_id">
-      <Position>4</Position>
-      <DataType>integer|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>688</StateNumber>
-      <SequenceName>booking_place_id_seq</SequenceName>
-      <DefaultExpression>nextval(&apos;booking_place_id_seq&apos;::regclass)</DefaultExpression>
-    </column>
-    <column id="32" parent="22" name="booking_date">
-      <Position>5</Position>
-      <DataType>date|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>690</StateNumber>
-    </column>
-    <index id="33" parent="22" name="booking_id_pk">
-      <ObjectId>32847</ObjectId>
-      <ColNames>id</ColNames>
-      <Unique>1</Unique>
-    </index>
-    <index id="34" parent="22" name="booking_id_uindex">
-      <ObjectId>32846</ObjectId>
-      <ColNames>id</ColNames>
-      <Unique>1</Unique>
-    </index>
-    <key id="35" parent="22" name="booking_id_pk">
-      <ObjectId>32848</ObjectId>
-      <ColNames>id</ColNames>
-      <UnderlyingIndexName>booking_id_pk</UnderlyingIndexName>
-      <Primary>1</Primary>
-    </key>
-    <column id="36" parent="23" name="id">
-      <Position>1</Position>
-      <DataType>integer|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>700</StateNumber>
-      <SequenceName>genre_id_seq</SequenceName>
-      <DefaultExpression>nextval(&apos;genre_id_seq&apos;::regclass)</DefaultExpression>
-    </column>
-    <column id="37" parent="23" name="name">
-      <Position>2</Position>
-      <DataType>varchar|0</DataType>
-      <StateNumber>700</StateNumber>
-    </column>
-    <index id="38" parent="23" name="genre_id_uindex">
-      <ObjectId>32910</ObjectId>
-      <ColNames>id</ColNames>
-      <Unique>1</Unique>
-    </index>
-    <index id="39" parent="23" name="genre_pkey">
-      <ObjectId>32908</ObjectId>
-      <ColNames>id</ColNames>
-      <Unique>1</Unique>
-    </index>
-    <key id="40" parent="23" name="genre_pkey">
-      <ObjectId>32909</ObjectId>
-      <ColNames>id</ColNames>
-      <UnderlyingIndexName>genre_pkey</UnderlyingIndexName>
-      <Primary>1</Primary>
-    </key>
-    <column id="41" parent="24" name="id">
-      <Position>1</Position>
-      <DataType>integer|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>697</StateNumber>
-      <SequenceName>movie_id_seq</SequenceName>
-      <DefaultExpression>nextval(&apos;movie_id_seq&apos;::regclass)</DefaultExpression>
-    </column>
-    <column id="42" parent="24" name="title">
+    <column id="31" parent="23" name="name">
       <Position>2</Position>
       <DataType>varchar|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>697</StateNumber>
+      <StateNumber>717</StateNumber>
     </column>
-    <column id="43" parent="24" name="duration">
+    <column id="32" parent="23" name="address">
       <Position>3</Position>
-      <DataType>integer|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>697</StateNumber>
+      <DataType>varchar|0</DataType>
+      <StateNumber>717</StateNumber>
     </column>
-    <column id="44" parent="24" name="age_braket">
-      <Position>4</Position>
-      <DataType>integer|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>697</StateNumber>
-    </column>
-    <column id="45" parent="24" name="rating">
-      <Position>5</Position>
-      <DataType>integer|0</DataType>
-      <StateNumber>697</StateNumber>
-    </column>
-    <column id="46" parent="24" name="end_of_rental">
-      <Position>6</Position>
-      <DataType>date|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>697</StateNumber>
-    </column>
-    <index id="47" parent="24" name="movie_id_uindex">
-      <ObjectId>32898</ObjectId>
-      <ColNames>id</ColNames>
-      <Unique>1</Unique>
-    </index>
-    <index id="48" parent="24" name="movie_pkey">
-      <ObjectId>32896</ObjectId>
-      <ColNames>id</ColNames>
-      <Unique>1</Unique>
-    </index>
-    <key id="49" parent="24" name="movie_pkey">
-      <ObjectId>32897</ObjectId>
-      <ColNames>id</ColNames>
-      <UnderlyingIndexName>movie_pkey</UnderlyingIndexName>
-      <Primary>1</Primary>
-    </key>
-    <column id="50" parent="25" name="id">
-      <Position>1</Position>
-      <DataType>integer|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>691</StateNumber>
-      <SequenceName>place_id_seq</SequenceName>
-      <DefaultExpression>nextval(&apos;place_id_seq&apos;::regclass)</DefaultExpression>
-    </column>
-    <column id="51" parent="25" name="row">
-      <Position>2</Position>
-      <DataType>integer|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>691</StateNumber>
-    </column>
-    <column id="52" parent="25" name="place">
-      <Position>3</Position>
-      <DataType>integer|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>691</StateNumber>
-    </column>
-    <column id="53" parent="25" name="status">
+    <column id="33" parent="23" name="is_active">
       <Position>4</Position>
       <DataType>boolean|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>691</StateNumber>
+      <StateNumber>717</StateNumber>
     </column>
-    <column id="54" parent="25" name="cinema_id">
-      <Position>5</Position>
-      <DataType>integer|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>691</StateNumber>
-      <SequenceName>place_cinema_id_seq</SequenceName>
-      <DefaultExpression>nextval(&apos;place_cinema_id_seq&apos;::regclass)</DefaultExpression>
-    </column>
-    <column id="55" parent="25" name="cost">
-      <Position>6</Position>
-      <DataType>integer|0</DataType>
-      <NotNull>1</NotNull>
-      <StateNumber>693</StateNumber>
-    </column>
-    <column id="56" parent="25" name="coefficient">
-      <Position>7</Position>
-      <DataType>integer|0</DataType>
-      <StateNumber>694</StateNumber>
-    </column>
-    <index id="57" parent="25" name="place_id_uindex">
-      <ObjectId>32877</ObjectId>
+    <index id="34" parent="23" name="cinema_id_uindex">
+      <ObjectId>32925</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="58" parent="25" name="place_pkey">
-      <ObjectId>32875</ObjectId>
+    <index id="35" parent="23" name="cinema_pkey">
+      <ObjectId>32923</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="59" parent="25" name="place_pkey">
-      <ObjectId>32876</ObjectId>
+    <key id="36" parent="23" name="cinema_pkey">
+      <ObjectId>32924</ObjectId>
       <ColNames>id</ColNames>
-      <UnderlyingIndexName>place_pkey</UnderlyingIndexName>
+      <UnderlyingIndexName>cinema_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="60" parent="26" name="id">
+    <column id="37" parent="24" name="id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
@@ -318,88 +171,290 @@
       <SequenceName>seance_id_seq</SequenceName>
       <DefaultExpression>nextval(&apos;seance_id_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="61" parent="26" name="cinema_id">
+    <column id="38" parent="24" name="cinema_id">
       <Position>2</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>695</StateNumber>
     </column>
-    <column id="62" parent="26" name="movie_id">
+    <column id="39" parent="24" name="movie_id">
       <Position>3</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>695</StateNumber>
     </column>
-    <column id="63" parent="26" name="date">
+    <column id="40" parent="24" name="date">
       <Position>4</Position>
       <DataType>date|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>695</StateNumber>
     </column>
-    <index id="64" parent="26" name="seance_id_uindex">
+    <index id="41" parent="24" name="seance_id_uindex">
       <ObjectId>32886</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <index id="65" parent="26" name="seance_pkey">
+    <index id="42" parent="24" name="seance_pkey">
       <ObjectId>32884</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="66" parent="26" name="seance_pkey">
+    <key id="43" parent="24" name="seance_pkey">
       <ObjectId>32885</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>seance_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="67" parent="27" name="id">
+    <column id="44" parent="25" name="id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>700</StateNumber>
+      <SequenceName>genre_id_seq</SequenceName>
+      <DefaultExpression>nextval(&apos;genre_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="45" parent="25" name="name">
+      <Position>2</Position>
+      <DataType>varchar|0</DataType>
+      <StateNumber>700</StateNumber>
+    </column>
+    <index id="46" parent="25" name="genre_id_uindex">
+      <ObjectId>32910</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="47" parent="25" name="genre_pkey">
+      <ObjectId>32908</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="48" parent="25" name="genre_pkey">
+      <ObjectId>32909</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>genre_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="49" parent="26" name="id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>697</StateNumber>
+      <SequenceName>movie_id_seq</SequenceName>
+      <DefaultExpression>nextval(&apos;movie_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="50" parent="26" name="title">
+      <Position>2</Position>
+      <DataType>varchar|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>697</StateNumber>
+    </column>
+    <column id="51" parent="26" name="duration">
+      <Position>3</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>697</StateNumber>
+    </column>
+    <column id="52" parent="26" name="age_braket">
+      <Position>4</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>697</StateNumber>
+    </column>
+    <column id="53" parent="26" name="rating">
+      <Position>5</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>697</StateNumber>
+    </column>
+    <column id="54" parent="26" name="end_of_rental">
+      <Position>6</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>697</StateNumber>
+    </column>
+    <index id="55" parent="26" name="movie_id_uindex">
+      <ObjectId>32898</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="56" parent="26" name="movie_pkey">
+      <ObjectId>32896</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="57" parent="26" name="movie_pkey">
+      <ObjectId>32897</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>movie_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="58" parent="27" name="id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>680</StateNumber>
+      <SequenceName>booking_id_seq</SequenceName>
+      <DefaultExpression>nextval(&apos;booking_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="59" parent="27" name="user_id">
+      <Position>2</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>672</StateNumber>
+      <SequenceName>booking_user_id_seq</SequenceName>
+    </column>
+    <column id="60" parent="27" name="seance_id">
+      <Position>3</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>684</StateNumber>
+      <SequenceName>booking_seance_id_seq</SequenceName>
+      <DefaultExpression>nextval(&apos;booking_seance_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="61" parent="27" name="place_id">
+      <Position>4</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>688</StateNumber>
+      <SequenceName>booking_place_id_seq</SequenceName>
+      <DefaultExpression>nextval(&apos;booking_place_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="62" parent="27" name="booking_date">
+      <Position>5</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>690</StateNumber>
+    </column>
+    <column id="63" parent="27" name="status">
+      <Position>6</Position>
+      <DataType>varchar|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>716</StateNumber>
+    </column>
+    <index id="64" parent="27" name="booking_id_pk">
+      <ObjectId>32847</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="65" parent="27" name="booking_id_uindex">
+      <ObjectId>32846</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="66" parent="27" name="booking_id_pk">
+      <ObjectId>32848</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>booking_id_pk</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="67" parent="28" name="id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>691</StateNumber>
+      <SequenceName>place_id_seq</SequenceName>
+      <DefaultExpression>nextval(&apos;place_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="68" parent="28" name="row">
+      <Position>2</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>691</StateNumber>
+    </column>
+    <column id="69" parent="28" name="place">
+      <Position>3</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>691</StateNumber>
+    </column>
+    <column id="70" parent="28" name="status">
+      <Position>4</Position>
+      <DataType>boolean|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>691</StateNumber>
+    </column>
+    <column id="71" parent="28" name="cinema_id">
+      <Position>5</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>691</StateNumber>
+      <SequenceName>place_cinema_id_seq</SequenceName>
+      <DefaultExpression>nextval(&apos;place_cinema_id_seq&apos;::regclass)</DefaultExpression>
+    </column>
+    <column id="72" parent="28" name="cost">
+      <Position>6</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>693</StateNumber>
+    </column>
+    <column id="73" parent="28" name="coefficient">
+      <Position>7</Position>
+      <DataType>integer|0</DataType>
+      <StateNumber>694</StateNumber>
+    </column>
+    <index id="74" parent="28" name="place_id_uindex">
+      <ObjectId>32877</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="75" parent="28" name="place_pkey">
+      <ObjectId>32875</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="76" parent="28" name="place_pkey">
+      <ObjectId>32876</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>place_pkey</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="77" parent="29" name="id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>687</StateNumber>
       <SequenceName>user_id_seq</SequenceName>
     </column>
-    <column id="68" parent="27" name="login">
+    <column id="78" parent="29" name="login">
       <Position>2</Position>
       <DataType>varchar|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>674</StateNumber>
     </column>
-    <column id="69" parent="27" name="password">
+    <column id="79" parent="29" name="password">
       <Position>3</Position>
       <DataType>varchar|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>675</StateNumber>
     </column>
-    <column id="70" parent="27" name="first_name">
+    <column id="80" parent="29" name="first_name">
       <Position>4</Position>
       <DataType>varchar|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>671</StateNumber>
     </column>
-    <column id="71" parent="27" name="last_name">
+    <column id="81" parent="29" name="last_name">
       <Position>5</Position>
       <DataType>varchar|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>671</StateNumber>
     </column>
-    <column id="72" parent="27" name="e_mail">
+    <column id="82" parent="29" name="e_mail">
       <Position>6</Position>
       <DataType>varchar|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>671</StateNumber>
     </column>
-    <column id="73" parent="27" name="role">
+    <column id="83" parent="29" name="role">
       <Position>7</Position>
       <DataType>varchar|0</DataType>
       <StateNumber>671</StateNumber>
     </column>
-    <index id="74" parent="27" name="User_pkey">
+    <index id="84" parent="29" name="User_pkey">
       <ObjectId>32819</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="75" parent="27" name="User_pkey">
+    <key id="85" parent="29" name="User_pkey">
       <ObjectId>32820</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>User_pkey</UnderlyingIndexName>

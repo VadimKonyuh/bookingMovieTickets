@@ -9,23 +9,20 @@ import static com.vironIt.jdbc.HikariCPDataSource.*;
 
 public class TestConnection {
     public static void main(String[] args) {
-        try {
-            Connection connection = getConnection();
+        try(Connection connection =  getConnection();
             Statement statement = connection.createStatement();
-
-            ResultSet resultSet = statement.executeQuery("SELECT id, login FROM users");
+            ResultSet resultSet = statement.executeQuery("SELECT id, login FROM \"user\"");){
                 while (resultSet.next()){
                     int i = resultSet.getInt("id");
-                    String string = resultSet.getString("login");
+                    String string = resultSet.getString(2);
                     System.out.println(resultSet.getRow() + "." + i + " " + string);
                 }
-
-                resultSet.close();
-                statement.close();
-                connection.close();
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    TestConnection(){
+
     }
 }
