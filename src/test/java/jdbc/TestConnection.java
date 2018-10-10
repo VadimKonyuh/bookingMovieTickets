@@ -1,15 +1,15 @@
-package com.vironIt.jdbc;
+package jdbc;
+
+import com.vironIt.jdbc.HikariCPDataSource;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import static com.vironIt.jdbc.HikariCPDataSource.*;
-
 public class TestConnection {
     public static void main(String[] args) {
-        try(Connection connection =  getConnection();
+        try(Connection connection =  HikariCPDataSource.getConnection();
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT id, login FROM \"user\"");){
                 while (resultSet.next()){
