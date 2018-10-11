@@ -16,13 +16,17 @@ public class UserDAOImpl implements UserDAO {
         PreparedStatement preparedStatement = null;
 
         try(Connection connection =  HikariCPDataSource.getConnection()){
-            preparedStatement = connection.prepareStatement("INSERT INTO \"user\" (login, password, first_name, last_name, e_mail, role) VALUES (?, ?, ?, ?, ?, ?)");
-            preparedStatement.setString(1, user.getLogin());
-            preparedStatement.setString(2, user.getPassword());
-            preparedStatement.setString(3, user.getFirst_name());
-            preparedStatement.setString(4, user.getLast_name());
-            preparedStatement.setString(5, user.getEmail());
-            preparedStatement.setString(6, user.getRole());
+            preparedStatement = connection.prepareStatement("INSERT INTO \"user\" (id, login, password, first_name, last_name, e_mail, role) VALUES (?, ?, ?, ?, ?, ?, ?)");
+
+            preparedStatement.setLong  (1, user.getId());
+            preparedStatement.setString(2, user.getLogin());
+            preparedStatement.setString(3, user.getPassword());
+            preparedStatement.setString(4, user.getFirst_name());
+            preparedStatement.setString(5, user.getLast_name());
+            preparedStatement.setString(6, user.getEmail());
+            preparedStatement.setString(7, user.getRole());
+
+            preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -70,6 +74,7 @@ public class UserDAOImpl implements UserDAO {
             user.setLast_name(resultSet.getString(5));
             user.setEmail(resultSet.getString(6));
             user.setRole(resultSet.getString(7));
+            users.add(user);
         }
 
         return users;

@@ -3,7 +3,6 @@ package com.vironIt.service;
 import com.vironIt.db.dao.UserDAO;
 import com.vironIt.db.dao.UserDAOImpl;
 import com.vironIt.entity.User;
-
 import java.util.List;
 
 public class UserService {

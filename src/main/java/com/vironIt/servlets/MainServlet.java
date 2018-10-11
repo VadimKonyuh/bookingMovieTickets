@@ -1,4 +1,4 @@
-package com.vironIt;
+package com.vironIt.servlets;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -13,6 +13,7 @@ public class MainServlet extends HttpServlet{
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
+//        req.getRequestDispatcher("starpage.jsp").forward(req, resp);
         PrintWriter out = resp.getWriter();
         out.print("<h1>Hello Servlet</h>");
     }
@@ -23,6 +24,4 @@ public class MainServlet extends HttpServlet{
 
         super.doPost(req, resp);
     }
-
-
 }
