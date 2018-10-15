@@ -1,12 +1,12 @@
 E:\java\sweater-JPA_Postgres\BookingMovieTickets\bookingmovietickets\src\main\java\com\vironIt\entity\User.java
-E:\java\sweater-JPA_Postgres\BookingMovieTickets\bookingmovietickets\src\main\java\com\vironIt\MainServlet.java
 E:\java\sweater-JPA_Postgres\BookingMovieTickets\bookingmovietickets\src\main\java\com\vironIt\entity\Movie.java
 E:\java\sweater-JPA_Postgres\BookingMovieTickets\bookingmovietickets\src\main\java\com\vironIt\service\UserService.java
 E:\java\sweater-JPA_Postgres\BookingMovieTickets\bookingmovietickets\src\main\java\com\vironIt\entity\Order.java
-E:\java\sweater-JPA_Postgres\BookingMovieTickets\bookingmovietickets\src\main\java\com\vironIt\Servlet.java
 E:\java\sweater-JPA_Postgres\BookingMovieTickets\bookingmovietickets\src\main\java\com\vironIt\entity\Cinema.java
 E:\java\sweater-JPA_Postgres\BookingMovieTickets\bookingmovietickets\src\main\java\com\vironIt\servlets\SetvletEx.java
 E:\java\sweater-JPA_Postgres\BookingMovieTickets\bookingmovietickets\src\main\java\com\vironIt\entity\Distribution.java
+E:\java\sweater-JPA_Postgres\BookingMovieTickets\bookingmovietickets\src\main\java\com\vironIt\servlets\MainServlet.java
+E:\java\sweater-JPA_Postgres\BookingMovieTickets\bookingmovietickets\src\main\java\com\vironIt\servlets\Servlet.java
 E:\java\sweater-JPA_Postgres\BookingMovieTickets\bookingmovietickets\src\main\java\com\vironIt\db\dao\UserDAO.java
 E:\java\sweater-JPA_Postgres\BookingMovieTickets\bookingmovietickets\src\main\java\com\vironIt\jdbc\HikariCPDataSource.java
 E:\java\sweater-JPA_Postgres\BookingMovieTickets\bookingmovietickets\src\main\java\com\vironIt\db\dao\UserDAOImpl.java

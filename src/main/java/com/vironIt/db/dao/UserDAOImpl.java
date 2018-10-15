@@ -1,5 +1,6 @@
 package com.vironIt.db.dao;
 
+import com.sun.istack.internal.NotNull;
 import com.vironIt.entity.User;
 import com.vironIt.jdbc.HikariCPDataSource;
 
@@ -12,6 +13,7 @@ public class UserDAOImpl implements UserDAO {
     public UserDAOImpl() {
     }
 
+    @Override
     public void addUser(User user) {
         PreparedStatement preparedStatement = null;
 
@@ -41,11 +43,9 @@ public class UserDAOImpl implements UserDAO {
                 e.printStackTrace();
             }
         }
-
-
     }
 
-
+    @Override
     public List<User> getUsers() {
         List users = null;
 
@@ -62,12 +62,89 @@ public class UserDAOImpl implements UserDAO {
         return users;
     }
 
+
+    @Override
+    public User getById(Long id) {
+        String sql = "SELECT * FROM \"user\" WHERE ID = ?";
+        User user = new User();
+
+        try(Connection connection = HikariCPDataSource.getConnection();
+            PreparedStatement  preparedStatement = connection.prepareStatement("SELECT * FROM \"user\" WHERE ID = ?")){
+
+            preparedStatement.setLong(1,id);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            user.setId(resultSet.getLong(1));
+            user.setLogin(resultSet.getString(2));
+            user.setPassword(resultSet.getString(3));
+            user.setFirst_name(resultSet.getString(4));
+            user.setLast_name(resultSet.getString(5));
+            user.setEmail(resultSet.getString(6));
+            user.setRole(resultSet.getString(7));
+
+            preparedStatement.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return user;
+    }
+
+
+    @Override
+    public void update(User user) {
+
+        try(Connection connection = HikariCPDataSource.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE \"user\" SET id = ?, login = ?, password = ?, first_name = ?, last_name = ?, e_mail = ?, role = ?")){
+            preparedStatement.setLong(1, user.getId());
+            preparedStatement.setString(2, user.getLogin());
+            preparedStatement.setString(3, user.getPassword());
+            preparedStatement.setString(4, user.getFirst_name());
+            preparedStatement.setString(5, user.getLast_name());
+            preparedStatement.setString(6, user.getEmail());
+            preparedStatement.setString(7, user.getRole());
+
+            preparedStatement.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+
+    @Override
+    public void remove(Long id) {
+
+        try(Connection connection = HikariCPDataSource.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM \"user\" WHERE id = ?")){
+            preparedStatement.setLong(1, id);
+
+            preparedStatement.executeUpdate();
+        }catch (SQLException e){
+                e.printStackTrace();
+        }
+    }
+
+
+    public User getById(int userId){
+        User userFromDb = new User();
+        UserDAOImpl userDAO = new UserDAOImpl();
+        List<User> users;
+        users = userDAO.getUsers();
+
+        for (User user: users){
+            if(user.getId() == userId){
+                userFromDb = user;
+            }
+        }
+
+        return userFromDb;
+    }
+
     private List<User> initClients(ResultSet resultSet) throws SQLException{
         ArrayList users = new ArrayList();
 
         while (resultSet.next()){
             User user = new User();
-            user.setId(resultSet.getInt(1));
+            user.setId(resultSet.getLong(1));
             user.setLogin(resultSet.getString(2));
             user.setPassword(resultSet.getString(3));
             user.setFirst_name(resultSet.getString(4));

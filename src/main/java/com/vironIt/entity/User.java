@@ -3,7 +3,7 @@ package com.vironIt.entity;
 
 public class User {
 
-    private long id;
+    private Long id;
     private String login;
     private String password;
     private String first_name;
@@ -14,7 +14,7 @@ public class User {
     public User() {
     }
 
-    public User(long id, String login, String password, String first_name, String last_name, String email, String role) {
+    public User(Long id, String login, String password, String first_name, String last_name, String email, String role) {
         this.id = id;
         this.login = login;
         this.password = password;
@@ -24,11 +24,11 @@ public class User {
         this.role = role;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

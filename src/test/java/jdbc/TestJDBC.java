@@ -8,12 +8,8 @@ import java.util.List;
 
 public class TestJDBC {
     public static void main(String[] args) {
+
         UserService userService = new UserService();
-
-
-//        User user = new User(1501, "vadim","13", "Vadim",
-//                "Konyuh","vadim.konyuh@mail.ru","admin");
-//        userService.addUser(user);
 
         List<User> users = userService.getUsers();
 
