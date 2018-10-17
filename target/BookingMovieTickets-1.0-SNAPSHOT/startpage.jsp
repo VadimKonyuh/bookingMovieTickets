@@ -6,7 +6,7 @@
 </head>
 <body>
     <h1>Hello ${name}</h1>
-    <form>
+    <form action="/mainServlet" method="post">
         <table>
             <tr>
                 <td><b>Login</b></td>
@@ -34,9 +34,7 @@
 
         </table>
     </form>
-    <form action="/servlet" method="post">
 
-    </form>
 
 </body>
 </html>

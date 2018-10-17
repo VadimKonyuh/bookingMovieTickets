@@ -20,6 +20,9 @@ public class MainPageServlet extends HttpServlet{
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException{
 
-        super.doPost(req, resp);
+        String name = req.getParameter("login");
+        req.setAttribute("name", name);
+        req.getRequestDispatcher("user.jsp").forward(req, resp);
+
     }
 }
