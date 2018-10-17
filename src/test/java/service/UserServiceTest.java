@@ -10,8 +10,8 @@ import java.util.List;
 public class UserServiceTest {
 
 
-
-    public static void main(String[] args) {
+     @Test
+     public void getAllUserTest(){
         UserService userService = new UserService();
         List<User> users = userService.getUsers();
         Iterator iterator = users.iterator();

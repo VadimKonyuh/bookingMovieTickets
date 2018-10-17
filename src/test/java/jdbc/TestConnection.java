@@ -20,7 +20,7 @@ public class TestConnection {
     public void TestConnection(){
         try(Connection connection =  HikariCPDataSource.getConnection();
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT id, login FROM \"user\"");){
+            ResultSet resultSet = statement.executeQuery("SELECT ID, login  FROM \"user\"");){
             while (resultSet.next()){
                 int i = resultSet.getInt("id");
                 String string = resultSet.getString(2);

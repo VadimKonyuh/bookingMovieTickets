@@ -11,12 +11,21 @@ public class UserService {
     public UserService(){
     }
 
-    public void addUser(User user){
-        this.userDAO.addUser(user);
+    public void addUser(User user){this.userDAO.addUser(user); }
+
+    public void updateUser(User user){
+        this.userDAO.update(user);
     }
 
-    public List<User> getUsers(){
-        return this.userDAO.getUsers();
+    public List<User> getUsers(){ return this.userDAO.getUsers();}
+
+    public void removeUser(long id){
+        this.userDAO.remove(id);
     }
 
+    public User getUserById(long id){ return this.userDAO.getById(id);}
+
+    public User findUser(String name, String password){
+        return  this.userDAO.find(name, password);
+    }
 }

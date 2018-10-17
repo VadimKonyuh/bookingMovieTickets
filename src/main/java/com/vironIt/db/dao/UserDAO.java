@@ -12,4 +12,5 @@ public interface UserDAO {
     User getById(Long id);
     void update(User user);
     void remove(Long id);
+    User find(String name, String password);
 }

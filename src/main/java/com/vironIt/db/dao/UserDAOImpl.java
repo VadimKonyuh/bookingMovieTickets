@@ -53,7 +53,6 @@ public class UserDAOImpl implements UserDAO {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM \"user\"")){
             users = this.initClients(resultSet);
-
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Возникла ошибка");
@@ -123,6 +122,32 @@ public class UserDAOImpl implements UserDAO {
         }
     }
 
+    public User find(String name, String password){
+        String sql = "SELECT * FROM \"user\" WHERE login = ? AND password = ?";
+        User user = new User();
+
+        try(Connection connection = HikariCPDataSource.getConnection();
+            PreparedStatement  preparedStatement = connection.prepareStatement("SELECT * FROM \"user\" WHERE login = ? AND password = ?")){
+
+            preparedStatement.setString(1, name);
+            preparedStatement.setString(2, password);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()){
+                user.setId(resultSet.getLong(1));
+                user.setLogin(resultSet.getString(2));
+                user.setPassword(resultSet.getString(3));
+                user.setFirst_name(resultSet.getString(4));
+                user.setLast_name(resultSet.getString(5));
+                user.setEmail(resultSet.getString(6));
+                user.setRole(resultSet.getString(7));
+            }
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return user;
+    }
 
     public User getById(int userId){
         User userFromDb = new User();
@@ -138,6 +163,7 @@ public class UserDAOImpl implements UserDAO {
 
         return userFromDb;
     }
+
 
     private List<User> initClients(ResultSet resultSet) throws SQLException{
         ArrayList users = new ArrayList();

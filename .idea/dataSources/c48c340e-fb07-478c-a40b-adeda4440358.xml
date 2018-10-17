@@ -17,8 +17,8 @@
     </database>
     <schema id="5" parent="2" name="public">
       <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2018-10-15.12:25:35.269</IntrospectionTimestamp>
-      <IntrospectionStateNumber>719</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2018-10-17.10:18:10.136</IntrospectionTimestamp>
+      <IntrospectionStateNumber>739</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -39,36 +39,36 @@
     </schema>
     <schema id="11" parent="3" name="public">
       <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2018-10-15.12:25:37.646</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2018-10-17.10:18:12.073</IntrospectionTimestamp>
       <IntrospectionStateNumber>670</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
     <schema id="12" parent="3" name="pg_catalog">
       <ObjectId>11</ObjectId>
-      <IntrospectionTimestamp>2018-10-15.12:25:37.646</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2018-10-17.10:18:12.073</IntrospectionTimestamp>
       <IntrospectionStateNumber>556</IntrospectionStateNumber>
       <Visible>1</Visible>
     </schema>
     <schema id="13" parent="3" name="pg_toast">
       <ObjectId>99</ObjectId>
-      <IntrospectionTimestamp>2018-10-15.12:25:37.646</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2018-10-17.10:18:12.073</IntrospectionTimestamp>
       <IntrospectionStateNumber>445</IntrospectionStateNumber>
       <Visible>1</Visible>
     </schema>
     <schema id="14" parent="3" name="pg_temp_1">
       <ObjectId>11736</ObjectId>
-      <IntrospectionTimestamp>2018-10-15.12:25:37.646</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2018-10-17.10:18:12.073</IntrospectionTimestamp>
       <Visible>1</Visible>
     </schema>
     <schema id="15" parent="3" name="pg_toast_temp_1">
       <ObjectId>11737</ObjectId>
-      <IntrospectionTimestamp>2018-10-15.12:25:37.646</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2018-10-17.10:18:12.073</IntrospectionTimestamp>
       <Visible>1</Visible>
     </schema>
     <schema id="16" parent="3" name="information_schema">
       <ObjectId>12648</ObjectId>
-      <IntrospectionTimestamp>2018-10-15.12:25:37.646</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2018-10-17.10:18:12.073</IntrospectionTimestamp>
       <IntrospectionStateNumber>504</IntrospectionStateNumber>
       <Visible>1</Visible>
     </schema>
@@ -158,7 +158,7 @@
     </table>
     <table id="35" parent="5" name="user">
       <ObjectId>32806</ObjectId>
-      <StateNumber>713</StateNumber>
+      <StateNumber>739</StateNumber>
     </table>
     <sequence id="36" parent="11" name="hibernate_sequence">
       <ObjectId>24667</ObjectId>
@@ -28474,9 +28474,9 @@
     </key>
     <column id="4027" parent="35" name="id">
       <Position>1</Position>
-      <DataType>integer|0</DataType>
+      <DataType>bigint|0</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>687</StateNumber>
+      <StateNumber>739</StateNumber>
       <SequenceName>user_id_seq</SequenceName>
     </column>
     <column id="4028" parent="35" name="login">
@@ -28515,12 +28515,12 @@
       <StateNumber>671</StateNumber>
     </column>
     <index id="4034" parent="35" name="User_pkey">
-      <ObjectId>32819</ObjectId>
+      <ObjectId>32926</ObjectId>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="4035" parent="35" name="User_pkey">
-      <ObjectId>32820</ObjectId>
+      <ObjectId>32927</ObjectId>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>User_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
