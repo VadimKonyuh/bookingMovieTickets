@@ -26,6 +26,6 @@ public class UserService {
     public User getUserById(long id){ return this.userDAO.getById(id);}
 
     public User findUser(String name, String password){
-        return  this.userDAO.find(name, password);
+        return  this.userDAO.getUserByLoginPassword(name, password);
     }
 }

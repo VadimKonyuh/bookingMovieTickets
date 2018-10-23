@@ -12,6 +12,7 @@ public class HikariCPDataSource {
     private static HikariDataSource ds;
 
     static {
+        config.setDriverClassName("org.postgresql.Driver");
         config.setJdbcUrl("jdbc:postgresql:booking_cinema_tickets");
         config.setUsername("postgres");
         config.setPassword("postgres");
