@@ -1,6 +1,6 @@
 package com.vironIt.servlets;
 
-import com.vironIt.db.dao.UserDAOImpl;
+import com.vironIt.db.dao.impl.UserDAOImpl;
 import com.vironIt.entity.User;
 import com.vironIt.service.UserService;
 
@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class RegistrationServlet extends HttpServlet{
-
-    UserDAOImpl userDAO = new UserDAOImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -31,21 +29,17 @@ public class RegistrationServlet extends HttpServlet{
         User user = new User();
         user.setLogin(login);
         user.setPassword(password);
-        user.setFirst_name(firstName);
-        user.setLast_name(lastName);
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
         user.setEmail(eMail);
         user.setRole("user");
         UserService userService = new UserService();
         if (password.equals(password1)){
-//            if (userService.findUser(login, password).getLogin().equals(null)){
                 userService.addUser(user);
                 req.setAttribute("user", user);
                 req.setAttribute("name", login);
-                req.getRequestDispatcher("user.jsp").forward(req, resp);
-//            }
-        }else {
-
+                resp.sendRedirect("user.jsp");
+//                req.getRequestDispatcher("user.jsp").forward(req, resp);
         }
-
     }
 }

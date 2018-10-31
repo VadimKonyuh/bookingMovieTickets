@@ -1,25 +1,28 @@
 package com.vironIt.entity;
 
 
+import com.vironIt.entity.enums.Role;
+
 public class User {
 
     private Long id;
     private String login;
     private String password;
-    private String first_name;
-    private String last_name;
+    private String firstName;
+    private String lastName;
     private String email;
-    private String role;
+    private Role role;
+
 
     public User() {
     }
 
-    public User(Long id, String login, String password, String first_name, String last_name, String email, String role) {
+    public User(Long id, String login, String password, String firstName, String lastName, String email, Role role) {
         this.id = id;
         this.login = login;
         this.password = password;
-        this.first_name = first_name;
-        this.last_name = last_name;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.role = role;
     }
@@ -48,20 +51,20 @@ public class User {
         this.password = password;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getEmail() {
@@ -72,11 +75,21 @@ public class User {
         this.email = email;
     }
 
-    public String getRole() {
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(String role) { this.role = role; }
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public void setRole(String role){
+        if (role.toLowerCase().equals("user")){
+        this.role = Role.USER;}
+        else {if(role.toLowerCase().equals("admin"))
+            this.role = Role.ADMIN;
+        }
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -85,23 +98,23 @@ public class User {
 
         User user = (User) o;
 
-        if (id != user.id) return false;
-        if (!login.equals(user.login)) return false;
-        if (!password.equals(user.password)) return false;
-        if (!first_name.equals(user.first_name)) return false;
-        if (!last_name.equals(user.last_name)) return false;
-        if (!email.equals(user.email)) return false;
-        return role != null ? role.equals(user.role) : user.role == null;
+        if (id != null ? !id.equals(user.id) : user.id != null) return false;
+        if (login != null ? !login.equals(user.login) : user.login != null) return false;
+        if (password != null ? !password.equals(user.password) : user.password != null) return false;
+        if (firstName != null ? !firstName.equals(user.firstName) : user.firstName != null) return false;
+        if (lastName != null ? !lastName.equals(user.lastName) : user.lastName != null) return false;
+        if (email != null ? !email.equals(user.email) : user.email != null) return false;
+        return role == user.role;
     }
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + login.hashCode();
-        result = 31 * result + password.hashCode();
-        result = 31 * result + first_name.hashCode();
-        result = 31 * result + last_name.hashCode();
-        result = 31 * result + email.hashCode();
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (login != null ? login.hashCode() : 0);
+        result = 31 * result + (password != null ? password.hashCode() : 0);
+        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
+        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+        result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (role != null ? role.hashCode() : 0);
         return result;
     }
@@ -112,10 +125,10 @@ public class User {
                 "id=" + id +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
-                ", first_name='" + first_name + '\'' +
-                ", last_name='" + last_name + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
-                ", role='" + role + '\'' +
+                ", role=" + role +
                 '}';
     }
 }

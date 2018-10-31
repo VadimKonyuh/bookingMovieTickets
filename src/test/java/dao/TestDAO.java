@@ -1,11 +1,22 @@
 package dao;
 
 
-import com.vironIt.db.dao.UserDAOImpl;
+import com.vironIt.db.dao.impl.UserDAOImpl;
 import com.vironIt.entity.User;
+import com.vironIt.entity.enums.Role;
+import org.junit.Before;
 import org.junit.Test;
 
 public class TestDAO {
+
+    @Before
+    public void doSomeThing(){
+        User user = new User();
+        user.setFirstName("Vadim");
+        user.setLastName("Vadim");
+        user.setRole(Role.ADMIN);
+        System.out.println(user);
+    }
 
     @Test
     public void testAddUser(){
@@ -13,8 +24,8 @@ public class TestDAO {
         UserDAOImpl userDAO = new UserDAOImpl();
         user.setLogin("user");
         user.setPassword("user");
-        user.setFirst_name("user");
-        user.setLast_name("user");
+        user.setFirstName("user");
+        user.setLastName("user");
         user.setEmail("user");
         user.setRole("user");
         userDAO.addUser(user);
@@ -30,17 +41,17 @@ public class TestDAO {
 
     @Test
     public void testUpdateUser(){
-    User user = new User((long) 11233,"vadim","vadim","vadim","vadim","vadim","vadim");
+    User user = new User((long) 11233,"vadim","vadim","vadim","vadim","vadim",Role.ADMIN);
     UserDAOImpl userDAO = new UserDAOImpl();
         System.out.println(userDAO.getById( user.getId()));
-    userDAO.update(user);
+        userDAO.update(user);
         System.out.println(userDAO.getById( user.getId()));
     }
 
     @Test
     public void testRemove(){
         UserDAOImpl userDAO = new UserDAOImpl();
-        userDAO.remove((long) 998);
+        userDAO.remove(new Long(998));
     }
 
     @Test
@@ -51,8 +62,11 @@ public class TestDAO {
         System.out.println(user.getLogin() != null);
     }
 
-    public static void main(String[] args) {
+    @Test
+    public void getUserByLoginPassword(){
         UserDAOImpl userDAO = new UserDAOImpl();
-        userDAO.remove(new Long(998));
+        User user = userDAO.getUserByLoginPassword("vadim","13");
+        System.out.println(user);
+        System.out.println(user.getLogin() != null);
     }
 }

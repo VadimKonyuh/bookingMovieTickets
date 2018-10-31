@@ -27,7 +27,7 @@
                         </form>
 
 
-                        <form action="registration.jsp">
+                        <form action="/registration">
                         <td colspan = "2"><input type = "submit" value = "Registration"/></td>
                         </form>
                     </tr>

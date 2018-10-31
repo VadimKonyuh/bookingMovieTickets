@@ -1,11 +1,12 @@
 package com.vironIt.servlets;
 
-import com.vironIt.db.dao.UserDAOImpl;
+import com.vironIt.db.dao.impl.UserDAOImpl;
 import com.vironIt.entity.User;
 import com.vironIt.service.UserService;
+import javax.servlet.http.Cookie;
+import org.mortbay.jetty.servlet.AbstractSessionManager;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,25 +25,24 @@ public class LoginServlet extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        UserDAOImpl userDAO = new UserDAOImpl();
-        User user = null;
+        UserService userService = new UserService();
+        User user= null;
         String login = req.getParameter("login");
         String password = req.getParameter("password");
-        user = userDAO.getUserByLoginPassword(login, password);
-        System.out.println(user);
+        user = userService.getUserByLoginPassword(login, password);
         if (login.equals(user.getLogin()) && password.equals(user.getPassword())){
-            req.setAttribute("name", user.getFirst_name());
-            req.setAttribute("login", user.getLogin());
-            req.setAttribute("password", user.getPassword());
-            req.setAttribute("user", user);
+            Cookie logincookie = new Cookie("login", login);
+            logincookie.setMaxAge(30*60);
+            resp.addCookie(logincookie);
+//            resp.sendRedirect("/home");
 
-            System.out.println("1");
+//            req.setAttribute("name", user.getFirstName());
+//            req.setAttribute("login", user.getLogin());
+//            req.setAttribute("password", user.getPassword());
+//            req.setAttribute("user", user);
             req.getRequestDispatcher("/home").forward(req, resp);
         }else{
             resp.sendRedirect("/login");
-            System.out.println("Hello from invalid date");
         }
-        System.out.println(login + " " + password);
-
     }
 }

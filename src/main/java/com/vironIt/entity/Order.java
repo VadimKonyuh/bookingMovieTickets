@@ -3,43 +3,56 @@ package com.vironIt.entity;
 import java.util.Date;
 
 public class Order {
-    private long id;
-    private long user_id;
-    private long seance_id;
-    private long place_id;
+
+    private Long id;
+    private Long userId;
+    private Long distributionId;
+    private Long placeId;
     private Date date;
     private String status;
 
-    public long getId() {
+    public Order() {
+    }
+
+    public Order(Long id, Long userId, Long distributionId, Long placeId, Date date, String status) {
+        this.id = id;
+        this.userId = userId;
+        this.distributionId = distributionId;
+        this.placeId = placeId;
+        this.date = date;
+        this.status = status;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public long getUser_id() {
-        return user_id;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUser_id(long user_id) {
-        this.user_id = user_id;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
-    public long getSeance_id() {
-        return seance_id;
+    public Long getDistributionId() {
+        return distributionId;
     }
 
-    public void setSeance_id(long seance_id) {
-        this.seance_id = seance_id;
+    public void setDistributionId(Long distributionId) {
+        this.distributionId = distributionId;
     }
 
-    public long getPlace_id() {
-        return place_id;
+    public Long getPlaceId() {
+        return placeId;
     }
 
-    public void setPlace_id(long place_id) {
-        this.place_id = place_id;
+    public void setPlaceId(Long placeId) {
+        this.placeId = placeId;
     }
 
     public Date getDate() {
@@ -65,20 +78,21 @@ public class Order {
 
         Order order = (Order) o;
 
-        if (id != order.id) return false;
-        if (user_id != order.user_id) return false;
-        if (seance_id != order.seance_id) return false;
-        if (place_id != order.place_id) return false;
+        if (id != null ? !id.equals(order.id) : order.id != null) return false;
+        if (userId != null ? !userId.equals(order.userId) : order.userId != null) return false;
+        if (distributionId != null ? !distributionId.equals(order.distributionId) : order.distributionId != null)
+            return false;
+        if (placeId != null ? !placeId.equals(order.placeId) : order.placeId != null) return false;
         if (date != null ? !date.equals(order.date) : order.date != null) return false;
         return status != null ? status.equals(order.status) : order.status == null;
     }
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (int) (user_id ^ (user_id >>> 32));
-        result = 31 * result + (int) (seance_id ^ (seance_id >>> 32));
-        result = 31 * result + (int) (place_id ^ (place_id >>> 32));
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (userId != null ? userId.hashCode() : 0);
+        result = 31 * result + (distributionId != null ? distributionId.hashCode() : 0);
+        result = 31 * result + (placeId != null ? placeId.hashCode() : 0);
         result = 31 * result + (date != null ? date.hashCode() : 0);
         result = 31 * result + (status != null ? status.hashCode() : 0);
         return result;
@@ -88,9 +102,9 @@ public class Order {
     public String toString() {
         return "Order{" +
                 "id=" + id +
-                ", user_id=" + user_id +
-                ", seance_id=" + seance_id +
-                ", place_id=" + place_id +
+                ", userId=" + userId +
+                ", distributionId=" + distributionId +
+                ", placeId=" + placeId +
                 ", date=" + date +
                 ", status='" + status + '\'' +
                 '}';

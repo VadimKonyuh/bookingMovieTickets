@@ -1,14 +1,23 @@
 package com.vironIt.entity;
 
 public class Genre {
-    private long id;
+
+    private Integer id;
     private String name;
 
-    public long getId() {
+    public Genre() {
+    }
+
+    public Genre(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -27,14 +36,14 @@ public class Genre {
 
         Genre genre = (Genre) o;
 
-        if (id != genre.id) return false;
-        return name.equals(genre.name);
+        if (id != null ? !id.equals(genre.id) : genre.id != null) return false;
+        return name != null ? name.equals(genre.name) : genre.name == null;
     }
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + name.hashCode();
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
     }
 

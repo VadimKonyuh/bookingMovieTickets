@@ -3,33 +3,44 @@ package com.vironIt.entity;
 import java.util.Date;
 
 public class Distribution {
-    private long id;
-    private long cinema_id;
-    private long movie_id;
+
+    private Long id;
+    private Long cinemaId;
+    private Long movieId;
     private Date date;
 
-    public long getId() {
+    public Distribution() {
+    }
+
+    public Distribution(Long id, Long cinemaId, Long movieId, Date date) {
+        this.id = id;
+        this.cinemaId = cinemaId;
+        this.movieId = movieId;
+        this.date = date;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public long getCinema_id() {
-        return cinema_id;
+    public Long getCinemaId() {
+        return cinemaId;
     }
 
-    public void setCinema_id(long cinema_id) {
-        this.cinema_id = cinema_id;
+    public void setCinemaId(Long cinemaId) {
+        this.cinemaId = cinemaId;
     }
 
-    public long getMovie_id() {
-        return movie_id;
+    public Long getMovieId() {
+        return movieId;
     }
 
-    public void setMovie_id(long movie_id) {
-        this.movie_id = movie_id;
+    public void setMovieId(Long movieId) {
+        this.movieId = movieId;
     }
 
     public Date getDate() {
@@ -47,17 +58,17 @@ public class Distribution {
 
         Distribution that = (Distribution) o;
 
-        if (id != that.id) return false;
-        if (cinema_id != that.cinema_id) return false;
-        if (movie_id != that.movie_id) return false;
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (cinemaId != null ? !cinemaId.equals(that.cinemaId) : that.cinemaId != null) return false;
+        if (movieId != null ? !movieId.equals(that.movieId) : that.movieId != null) return false;
         return date != null ? date.equals(that.date) : that.date == null;
     }
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + (int) (cinema_id ^ (cinema_id >>> 32));
-        result = 31 * result + (int) (movie_id ^ (movie_id >>> 32));
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (cinemaId != null ? cinemaId.hashCode() : 0);
+        result = 31 * result + (movieId != null ? movieId.hashCode() : 0);
         result = 31 * result + (date != null ? date.hashCode() : 0);
         return result;
     }
@@ -66,8 +77,8 @@ public class Distribution {
     public String toString() {
         return "Distribution{" +
                 "id=" + id +
-                ", cinema_id=" + cinema_id +
-                ", movie_id=" + movie_id +
+                ", cinemaId=" + cinemaId +
+                ", movieId=" + movieId +
                 ", date=" + date +
                 '}';
     }

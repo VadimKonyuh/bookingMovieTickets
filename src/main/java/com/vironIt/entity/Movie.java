@@ -3,18 +3,31 @@ package com.vironIt.entity;
 import java.util.Date;
 
 public class Movie {
-    private long id;
+
+    private Long id;
     private String title;
     private String duration;
     private String description;
-    private int age_braket;
-    private Date end_of_rental;
+    private Integer ageRate;
+    private Date endOfRental;
 
-    public long getId() {
+    public Movie() {
+    }
+
+    public Movie(Long id, String title, String duration, String description, Integer ageRate, Date endOfRental) {
+        this.id = id;
+        this.title = title;
+        this.duration = duration;
+        this.description = description;
+        this.ageRate = ageRate;
+        this.endOfRental = endOfRental;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -42,20 +55,20 @@ public class Movie {
         this.description = description;
     }
 
-    public int getAge_braket() {
-        return age_braket;
+    public Integer getAgeRate() {
+        return ageRate;
     }
 
-    public void setAge_braket(int age_braket) {
-        this.age_braket = age_braket;
+    public void setAgeRate(Integer ageRate) {
+        this.ageRate = ageRate;
     }
 
-    public Date getEnd_of_rental() {
-        return end_of_rental;
+    public Date getEndOfRental() {
+        return endOfRental;
     }
 
-    public void setEnd_of_rental(Date end_of_rental) {
-        this.end_of_rental = end_of_rental;
+    public void setEndOfRental(Date endOfRental) {
+        this.endOfRental = endOfRental;
     }
 
     @Override
@@ -65,22 +78,22 @@ public class Movie {
 
         Movie movie = (Movie) o;
 
-        if (id != movie.id) return false;
-        if (age_braket != movie.age_braket) return false;
-        if (!title.equals(movie.title)) return false;
+        if (id != null ? !id.equals(movie.id) : movie.id != null) return false;
+        if (title != null ? !title.equals(movie.title) : movie.title != null) return false;
         if (duration != null ? !duration.equals(movie.duration) : movie.duration != null) return false;
         if (description != null ? !description.equals(movie.description) : movie.description != null) return false;
-        return end_of_rental != null ? end_of_rental.equals(movie.end_of_rental) : movie.end_of_rental == null;
+        if (ageRate != null ? !ageRate.equals(movie.ageRate) : movie.ageRate != null) return false;
+        return endOfRental != null ? endOfRental.equals(movie.endOfRental) : movie.endOfRental == null;
     }
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + title.hashCode();
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (title != null ? title.hashCode() : 0);
         result = 31 * result + (duration != null ? duration.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + age_braket;
-        result = 31 * result + (end_of_rental != null ? end_of_rental.hashCode() : 0);
+        result = 31 * result + (ageRate != null ? ageRate.hashCode() : 0);
+        result = 31 * result + (endOfRental != null ? endOfRental.hashCode() : 0);
         return result;
     }
 
@@ -91,8 +104,8 @@ public class Movie {
                 ", title='" + title + '\'' +
                 ", duration='" + duration + '\'' +
                 ", description='" + description + '\'' +
-                ", age_braket=" + age_braket +
-                ", end_of_rental=" + end_of_rental +
+                ", ageRate=" + ageRate +
+                ", endOfRental=" + endOfRental +
                 '}';
     }
 }

@@ -2,16 +2,26 @@ package com.vironIt.entity;
 
 public class Cinema {
 
-    private long id;
+    private Integer id;
     private String name;
     private String address;
-    private boolean is_active;
+    private Boolean isActive;
 
-    public long getId() {
+    public Cinema() {
+    }
+
+    public Cinema(Integer id, String name, String address, Boolean isActive) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.isActive = isActive;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -31,12 +41,12 @@ public class Cinema {
         this.address = address;
     }
 
-    public boolean isIs_active() {
-        return is_active;
+    public Boolean getActive() {
+        return isActive;
     }
 
-    public void setIs_active(boolean is_active) {
-        this.is_active = is_active;
+    public void setActive(Boolean active) {
+        isActive = active;
     }
 
     @Override
@@ -46,18 +56,28 @@ public class Cinema {
 
         Cinema cinema = (Cinema) o;
 
-        if (id != cinema.id) return false;
-        if (is_active != cinema.is_active) return false;
-        if (!name.equals(cinema.name)) return false;
-        return address.equals(cinema.address);
+        if (id != null ? !id.equals(cinema.id) : cinema.id != null) return false;
+        if (name != null ? !name.equals(cinema.name) : cinema.name != null) return false;
+        if (address != null ? !address.equals(cinema.address) : cinema.address != null) return false;
+        return isActive != null ? isActive.equals(cinema.isActive) : cinema.isActive == null;
     }
 
     @Override
     public int hashCode() {
-        int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + name.hashCode();
-        result = 31 * result + address.hashCode();
-        result = 31 * result + (is_active ? 1 : 0);
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (address != null ? address.hashCode() : 0);
+        result = 31 * result + (isActive != null ? isActive.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Cinema{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", isActive=" + isActive +
+                '}';
     }
 }

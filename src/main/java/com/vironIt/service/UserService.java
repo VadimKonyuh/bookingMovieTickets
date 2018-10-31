@@ -1,7 +1,7 @@
 package com.vironIt.service;
 
 import com.vironIt.db.dao.UserDAO;
-import com.vironIt.db.dao.UserDAOImpl;
+import com.vironIt.db.dao.impl.UserDAOImpl;
 import com.vironIt.entity.User;
 import java.util.List;
 
@@ -19,13 +19,13 @@ public class UserService {
 
     public List<User> getUsers(){ return this.userDAO.getUsers();}
 
-    public void removeUser(long id){
+    public void removeUser(Long id){
         this.userDAO.remove(id);
     }
 
-    public User getUserById(long id){ return this.userDAO.getById(id);}
+    public User getUserById(Long id){ return this.userDAO.getById(id);}
 
-    public User findUser(String name, String password){
-        return  this.userDAO.getUserByLoginPassword(name, password);
+    public User getUserByLoginPassword(String name, String password){
+        return this.userDAO.getUserByLoginPassword(name, password);
     }
 }
