@@ -34,12 +34,18 @@ public class RegistrationServlet extends HttpServlet{
         user.setEmail(eMail);
         user.setRole("user");
         UserService userService = new UserService();
-        if (password.equals(password1)){
-                userService.addUser(user);
-                req.setAttribute("user", user);
-                req.setAttribute("name", login);
-                resp.sendRedirect("user.jsp");
-//                req.getRequestDispatcher("user.jsp").forward(req, resp);
+        if (password.equals(password1) && login.length() > 5){
+            System.out.println(login.length());
+            userService.addUser(user);
+            req.setAttribute("user", user);
+            req.setAttribute("name", login);
+            resp.sendRedirect("loginSuccess.jsp");
+//                req.getRequestDispatcher("admin.jsp").forward(req, resp);
+        }else {
+            req.setAttribute("login", login);
+            req.setAttribute("password", password);
+            req.setAttribute("password1", password1);
+            req.getRequestDispatcher("registration.jsp").forward(req, resp);
         }
     }
 }

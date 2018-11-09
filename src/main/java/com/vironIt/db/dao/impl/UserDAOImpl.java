@@ -3,7 +3,6 @@ package com.vironIt.db.dao.impl;
 import com.vironIt.db.dao.UserDAO;
 import com.vironIt.entity.User;
 import com.vironIt.connectionpool.HikariCPDataSource;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +11,8 @@ public class UserDAOImpl implements UserDAO {
 
     private static final String SQL_ADD_USER = "INSERT INTO \"user\" (login, password, first_name, last_name, e_mail, role) VALUES (?, ?, ?, ?, ?, ?)";
     private static final String SQL_GET_USERS = "SELECT * FROM \"user\"";
-    private static final String SQL_GET_USER_BY_ID = "SELECT * FROM \"user\" WHERE ID = ?";
-    private static final String SQL_YSER_UPDATE = "UPDATE \"user\" SET id = ?, login = ?, password = ?, first_name = ?, last_name = ?, e_mail = ?, role = ?";
+    private static final String SQL_GET_USER_BY_ID = "SELECT * FROM user WHERE user.id = ?";
+    private static final String SQL_YSER_UPDATE = "UPDATE  \"user\" SET login = ?, password = ?, first_name = ?, last_name = ?, e_mail = ?, role = ? WHERE  id = ?" ;
     private static final String SQL_USER_REMOVE = "DELETE FROM \"user\" WHERE id = ?";
     private static final String SQL_GET_USER_BY_LOGIN_PASSWORD = "SELECT * FROM \"user\" WHERE login = ? AND password = ?";
 
@@ -34,7 +33,6 @@ public class UserDAOImpl implements UserDAO {
             preparedStatement.setString(4, user.getLastName());
             preparedStatement.setString(5, user.getEmail());
             preparedStatement.setString(6, user.getRole().toString());
-
             preparedStatement.executeUpdate();
 
         } catch (SQLException e) {
@@ -72,24 +70,25 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public User getById(Long id) {
-//        String sql = "SELECT * FROM \"user\" WHERE ID = ?";
+        String sql = "SELECT * FROM \"user\" WHERE id = ?";
         User user = new User();
 
         try(Connection connection = HikariCPDataSource.getConnection();
-            PreparedStatement  preparedStatement = connection.prepareStatement(SQL_GET_USER_BY_ID)){
+            PreparedStatement  preparedStatement = connection.prepareStatement(sql)){
 
             preparedStatement.setLong(1,id);
 
             ResultSet resultSet = preparedStatement.executeQuery();
-            user.setId(resultSet.getLong(1));
-            user.setLogin(resultSet.getString(2));
-            user.setPassword(resultSet.getString(3));
-            user.setFirstName(resultSet.getString(4));
-            user.setLastName(resultSet.getString(5));
-            user.setEmail(resultSet.getString(6));
-            user.setRole(resultSet.getString(7));
+            if (resultSet.next()) {
+                user.setId(resultSet.getLong(1));
+                user.setLogin(resultSet.getString(2));
+                user.setPassword(resultSet.getString(3));
+                user.setFirstName(resultSet.getString(4));
+                user.setLastName(resultSet.getString(5));
+                user.setEmail(resultSet.getString(6));
+                user.setRole(resultSet.getString(7));
+            }
 
-            preparedStatement.executeUpdate();
         }catch (SQLException e){
             e.printStackTrace();
         }
@@ -102,13 +101,14 @@ public class UserDAOImpl implements UserDAO {
 //        String sql = "UPDATE \"user\" SET id = ?, login = ?, password = ?, first_name = ?, last_name = ?, e_mail = ?, role = ?";
         try(Connection connection = HikariCPDataSource.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(SQL_YSER_UPDATE)){
-            preparedStatement.setLong(1, user.getId());
-            preparedStatement.setString(2, user.getLogin());
-            preparedStatement.setString(3, user.getPassword());
-            preparedStatement.setString(4, user.getFirstName());
-            preparedStatement.setString(5, user.getLastName());
-            preparedStatement.setString(6, user.getEmail());
-            preparedStatement.setString(7, user.getRole().toString());
+//            preparedStatement.setLong(1, user.getId());
+            preparedStatement.setString(1, user.getLogin());
+            preparedStatement.setString(2, user.getPassword());
+            preparedStatement.setString(3, user.getFirstName());
+            preparedStatement.setString(4, user.getLastName());
+            preparedStatement.setString(5, user.getEmail());
+            preparedStatement.setString(6, user.getRole().toString());
+            preparedStatement.setLong(7, user.getId());
 
             preparedStatement.executeUpdate();
         }catch (SQLException e){
@@ -158,19 +158,19 @@ public class UserDAOImpl implements UserDAO {
     }
 
 
-    public User getById(long userId){
-        User userFromDb = new User();
-        UserDAOImpl userDAO = new UserDAOImpl();
-        List<User> users;
-        users = userDAO.getUsers();
-
-        for (User user: users){
-            if(user.getId().equals(userId)){
-                userFromDb = user;
-            }
-        }
-        return userFromDb;
-    }
+//    public User getById(long userId){
+//        User userFromDb = new User();
+//        UserDAOImpl userDAO = new UserDAOImpl();
+//        List<User> users;
+//        users = userDAO.getUsers();
+//
+//        for (User user: users){
+//            if(user.getId().equals(userId)){
+//                userFromDb = user;
+//            }
+//        }
+//        return userFromDb;
+//    }
 
 
     private List<User> initClients(ResultSet resultSet) throws SQLException{

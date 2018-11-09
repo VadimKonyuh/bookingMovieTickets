@@ -5,7 +5,7 @@
     <title>Booking ticket</title>
 </head>
 <body>
-    <h1>Hello ${name}</h1>
+    <h1>Hello guest</h1>
         <form action="/login" method="post">
             <table>
                 <tr>
@@ -22,7 +22,7 @@
 
                 <table>
                     <tr>
-                        <form action="/login" method="post">
+                        <form>
                         <td colspan = "2"><input type = "submit" value = "Login"/></td>
                         </form>
 
@@ -32,6 +32,11 @@
                         </form>
                     </tr>
                 </table>
+                <h1>
+                    <font color="red">
+                    ${error}
+                    </font>
+                </h1>
             </table>
         </form>
 </body>

@@ -14,12 +14,12 @@
         <table>
             <tr>
                 <td>Login</td>
-                <td><input type = "text" name = "login"> </td>
+                <td><input type = "text" name = "login" value = ${login}> </td>
             </tr>
 
             <tr>
                 <td>Password</td>
-                <td><input type = "text" name = "password"> </td>
+                <td><input type = "text" name = "password" value = ${password}> </td>
             </tr>
 
             <tr>
@@ -47,6 +47,11 @@
                 <td colspan = "2"><input type = "submit" value = "register"/></td>
             </tr>
         </center>
+         <h1>
+             <font color="red">
+                 ${error}
+             </font>
+         </h1>
      </form>
 </body>
 </html>

@@ -4,9 +4,45 @@
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          version="3.0">
 
+    <display-name>LoginServletExample</display-name>
+
+    <filter>
+        <filter-name>RequestLoggingFilter</filter-name>
+        <filter-class>com.vironIt.servlets.filters.RequestLoggingFilter</filter-class>
+    </filter>
+
+    <filter>
+        <filter-name>AuthenticationFilter</filter-name>
+        <filter-class>com.vironIt.servlets.filters.AuthentificationFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>RequestLoggingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>AuthenticationFilter</filter-name>
+        <servlet-name>homeServlet</servlet-name>
+        <!--<url-pattern>loginSuccess*</url-pattern>-->
+    </filter-mapping>
+
     <welcome-file-list>
-        <welcome-file>startpage.jsp</welcome-file>
+        <welcome-file>login.jsp</welcome-file>
     </welcome-file-list>
+
+    <servlet>
+        <servlet-name>AdminMainServlet</servlet-name>
+        <servlet-class>com.vironIt.servlets.AdminMainServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AdminMainServlet</servlet-name>
+        <url-pattern>/home/admin</url-pattern>
+    </servlet-mapping>
+
+
     <servlet>
         <servlet-name>homeServlet</servlet-name>
         <servlet-class>com.vironIt.servlets.HomeServlet</servlet-class>

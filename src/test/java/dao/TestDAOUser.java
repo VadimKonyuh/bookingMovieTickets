@@ -7,10 +7,10 @@ import com.vironIt.entity.enums.Role;
 import org.junit.Before;
 import org.junit.Test;
 
-public class TestDAO {
+public class TestDAOUser {
 
     @Before
-    public void doSomeThing(){
+    public void createUser(){
         User user = new User();
         user.setFirstName("Vadim");
         user.setLastName("Vadim");
@@ -35,15 +35,17 @@ public class TestDAO {
     public void testGetUserByID(){
         User user;
         UserDAOImpl userDAO = new UserDAOImpl();
-        user = userDAO.getById(997);
+        user = userDAO.getById((long) 63);
         System.out.println(user);
     }
 
     @Test
     public void testUpdateUser(){
-    User user = new User((long) 11233,"vadim","vadim","vadim","vadim","vadim",Role.ADMIN);
     UserDAOImpl userDAO = new UserDAOImpl();
+    User user = userDAO.getUserByLoginPassword("User","user");
+
         System.out.println(userDAO.getById( user.getId()));
+        user.setLogin("User");
         userDAO.update(user);
         System.out.println(userDAO.getById( user.getId()));
     }

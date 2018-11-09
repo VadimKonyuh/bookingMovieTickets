@@ -9,7 +9,6 @@ import java.util.List;
 
 public class UserServiceTest {
 
-
      @Test
      public void getAllUserTest(){
         UserService userService = new UserService();
@@ -19,7 +18,5 @@ public class UserServiceTest {
             User user1 = (User)iterator.next();
             System.out.println(user1);
         }
-
     }
-
 }

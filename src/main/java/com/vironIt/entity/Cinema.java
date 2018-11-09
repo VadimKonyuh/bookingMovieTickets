@@ -5,16 +5,16 @@ public class Cinema {
     private Integer id;
     private String name;
     private String address;
-    private Boolean isActive;
+    private Boolean isOpen;
 
     public Cinema() {
     }
 
-    public Cinema(Integer id, String name, String address, Boolean isActive) {
+    public Cinema(Integer id, String name, String address, Boolean isOpen) {
         this.id = id;
         this.name = name;
         this.address = address;
-        this.isActive = isActive;
+        this.isOpen = isOpen;
     }
 
     public Integer getId() {
@@ -41,12 +41,22 @@ public class Cinema {
         this.address = address;
     }
 
-    public Boolean getActive() {
-        return isActive;
+    public Boolean getIsOpen() {
+        return isOpen;
     }
 
-    public void setActive(Boolean active) {
-        isActive = active;
+    public void setIsOpen(Boolean open) {
+        isOpen = open;
+    }
+
+    @Override
+    public String toString() {
+        return "Cinema{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", isOpen=" + isOpen +
+                '}';
     }
 
     @Override
@@ -59,7 +69,7 @@ public class Cinema {
         if (id != null ? !id.equals(cinema.id) : cinema.id != null) return false;
         if (name != null ? !name.equals(cinema.name) : cinema.name != null) return false;
         if (address != null ? !address.equals(cinema.address) : cinema.address != null) return false;
-        return isActive != null ? isActive.equals(cinema.isActive) : cinema.isActive == null;
+        return isOpen != null ? isOpen.equals(cinema.isOpen) : cinema.isOpen == null;
     }
 
     @Override
@@ -67,17 +77,7 @@ public class Cinema {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (address != null ? address.hashCode() : 0);
-        result = 31 * result + (isActive != null ? isActive.hashCode() : 0);
+        result = 31 * result + (isOpen != null ? isOpen.hashCode() : 0);
         return result;
-    }
-
-    @Override
-    public String toString() {
-        return "Cinema{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", address='" + address + '\'' +
-                ", isActive=" + isActive +
-                '}';
     }
 }
