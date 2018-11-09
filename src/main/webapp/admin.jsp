@@ -13,7 +13,7 @@
 </head>
 <body>
     <h1>Hello ${name}</h1>
-
+    <a href="/home">Checkout Page</a>
     <%--<form:select path="cinema">--%>
         <%--<c:forEach var="cinema" items="${cinemas}">--%>
             <%--<form:option value="${cinema}"> </form:option>--%>

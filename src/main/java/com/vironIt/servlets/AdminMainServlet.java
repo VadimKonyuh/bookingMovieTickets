@@ -21,6 +21,7 @@ public class AdminMainServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         CinemaService cinemaService = new CinemaService();
         Cinema cinema = new Cinema();
         String name = req.getParameter("name");
@@ -30,6 +31,9 @@ public class AdminMainServlet extends HttpServlet {
         cinemaService.addCinema(cinema);
         HttpSession session = req.getSession(false);
         session.setAttribute("error", "cinema was added");
+//        if (session == null){
+//            resp.sendRedirect("/login");
+//        }
         resp.sendRedirect("/home");
     }
 }

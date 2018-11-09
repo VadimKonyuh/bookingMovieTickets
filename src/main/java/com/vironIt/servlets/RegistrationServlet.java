@@ -39,9 +39,10 @@ public class RegistrationServlet extends HttpServlet{
             userService.addUser(user);
             req.setAttribute("user", user);
             req.setAttribute("name", login);
-            resp.sendRedirect("loginSuccess.jsp");
+            resp.sendRedirect("user.jsp");
 //                req.getRequestDispatcher("admin.jsp").forward(req, resp);
         }else {
+            req.setAttribute("error", "invalid date");
             req.setAttribute("login", login);
             req.setAttribute("password", password);
             req.setAttribute("password1", password1);

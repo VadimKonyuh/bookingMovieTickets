@@ -25,7 +25,7 @@
 <br>
 User=<%=user %>
 <br>
-<a href="loginSuccess.jsp">Checkout Page</a>
+<a href="login.jsp">Checkout Page</a>
 <form action="LogoutServlet" method="post">
     <input type="submit" value="Logout" >
 </form>

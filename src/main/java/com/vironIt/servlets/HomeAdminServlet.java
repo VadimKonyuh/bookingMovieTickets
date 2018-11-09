@@ -9,7 +9,7 @@ import javax.servlet.http.*;
 import java.io.IOException;
 
 
-public class HomeServlet extends HttpServlet{
+public class HomeAdminServlet extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)

@@ -43,7 +43,7 @@ public class LoginServlet extends HttpServlet{
             if (user.getRole().toString().toLowerCase().equals("admin")){
                 page = "/home";
             }else {
-                page = "loginSuccess.jsp";
+                page = "user.jsp";
             }
 
             resp.sendRedirect(page);

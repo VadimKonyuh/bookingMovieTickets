@@ -25,12 +25,19 @@
     <filter-mapping>
         <filter-name>AuthenticationFilter</filter-name>
         <servlet-name>homeServlet</servlet-name>
+        <servlet-name>AdminMainServlet</servlet-name>
         <!--<url-pattern>loginSuccess*</url-pattern>-->
     </filter-mapping>
 
     <welcome-file-list>
         <welcome-file>login.jsp</welcome-file>
     </welcome-file-list>
+
+    <!--<servlet>-->
+        <!--<servlet-name>UserMainServlet</servlet-name>-->
+        <!---->
+    <!--</servlet>-->
+
 
     <servlet>
         <servlet-name>AdminMainServlet</servlet-name>
@@ -45,7 +52,7 @@
 
     <servlet>
         <servlet-name>homeServlet</servlet-name>
-        <servlet-class>com.vironIt.servlets.HomeServlet</servlet-class>
+        <servlet-class>com.vironIt.servlets.HomeAdminServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
