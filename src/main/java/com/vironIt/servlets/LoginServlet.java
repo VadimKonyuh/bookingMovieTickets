@@ -1,5 +1,6 @@
 package com.vironIt.servlets;
 
+
 import com.vironIt.db.dao.impl.UserDAOImpl;
 import com.vironIt.entity.User;
 import com.vironIt.service.UserService;
@@ -10,6 +11,8 @@ import javax.servlet.http.*;
 
 import javax.servlet.ServletException;
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class LoginServlet extends HttpServlet{
@@ -29,13 +32,12 @@ public class LoginServlet extends HttpServlet{
         String login = req.getParameter("login");
         String password = req.getParameter("password");
         user = userService.getUserByLoginPassword(login, password);
-        System.out.println(user);
-        if (login.equals(user.getLogin()) && password.equals(user.getPassword())){
 
+        if (login.equals(user.getLogin()) && password.equals(user.getPassword())){
             HttpSession session = req.getSession();
             session.setAttribute("user",user);
             session.setAttribute("error","");
-            session.setMaxInactiveInterval( 20);
+            session.setMaxInactiveInterval(60);
             Cookie loginCookie = new Cookie("login", login);
             loginCookie.setMaxAge(30*60);
             resp.addCookie(loginCookie);
@@ -45,14 +47,12 @@ public class LoginServlet extends HttpServlet{
             }else {
                 page = "user.jsp";
             }
-
             resp.sendRedirect(page);
         }else{
                 error = "You entered an incorrect username or password";
                 req.setAttribute("error", error);
                 page = "login.jsp";
                 req.getRequestDispatcher(page).forward(req, resp);
-//            resp.sendRedirect("/login");
         }
     }
 }

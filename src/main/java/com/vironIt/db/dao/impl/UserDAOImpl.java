@@ -3,6 +3,8 @@ package com.vironIt.db.dao.impl;
 import com.vironIt.db.dao.UserDAO;
 import com.vironIt.entity.User;
 import com.vironIt.connectionpool.HikariCPDataSource;
+import com.vironIt.entity.enums.Role;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -86,7 +88,7 @@ public class UserDAOImpl implements UserDAO {
                 user.setFirstName(resultSet.getString(4));
                 user.setLastName(resultSet.getString(5));
                 user.setEmail(resultSet.getString(6));
-                user.setRole(resultSet.getString(7));
+                user.setRole(Role.valueOf(resultSet.getString(7).toUpperCase()));
             }
 
         }catch (SQLException e){
@@ -148,7 +150,7 @@ public class UserDAOImpl implements UserDAO {
                 user.setFirstName(resultSet.getString(4));
                 user.setLastName(resultSet.getString(5));
                 user.setEmail(resultSet.getString(6));
-                user.setRole(resultSet.getString(7));
+                user.setRole(Role.valueOf(resultSet.getString(7).toUpperCase()) );
             }
 
         }catch (SQLException e){
@@ -184,7 +186,7 @@ public class UserDAOImpl implements UserDAO {
             user.setFirstName(resultSet.getString(4));
             user.setLastName(resultSet.getString(5));
             user.setEmail(resultSet.getString(6));
-            user.setRole(resultSet.getString(7));
+            user.setRole(Role.valueOf(resultSet.getString(7).toUpperCase()));
             users.add(user);
         }
         return users;

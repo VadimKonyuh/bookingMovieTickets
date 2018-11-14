@@ -27,7 +27,7 @@ public class TestDAOUser {
         user.setFirstName("user");
         user.setLastName("user");
         user.setEmail("user");
-        user.setRole("user");
+        user.setRole(Role.USER);
         userDAO.addUser(user);
     }
 
