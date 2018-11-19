@@ -22,10 +22,17 @@ public class TestDAOCinema {
     }
 
     @Test
+    public void getCinemaByName(){
+        Cinema cinema;
+        CinemaDAOImpl cinemaDAO = new CinemaDAOImpl();
+        cinema = cinemaDAO.findCinemaByName("Аврора");
+        System.out.println(cinema.toString());
+    }
+
+    @Test
     public void createCinema(){
         Cinema cinema = new Cinema();
         cinema.setName("Аврора");
-        cinema.setIsOpen(false);
         CinemaDAOImpl cinemaDAO = new CinemaDAOImpl();
         cinemaDAO.create(cinema);
     }
@@ -35,7 +42,6 @@ public class TestDAOCinema {
     Cinema cinema = new Cinema();
     cinema.setId(3);
     cinema.setName("SilverScreen");
-    cinema.setIsOpen(true);
     CinemaDAOImpl cinemaDAO = new CinemaDAOImpl();
     cinemaDAO.update(cinema);
         System.out.println(cinema);

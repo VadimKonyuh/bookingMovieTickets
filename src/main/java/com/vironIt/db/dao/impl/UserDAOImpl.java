@@ -26,7 +26,6 @@ public class UserDAOImpl implements UserDAO {
         PreparedStatement preparedStatement = null;
 
         try(Connection connection =  HikariCPDataSource.getConnection()){
-//            String sql = "INSERT INTO \"user\" (login, password, first_name, last_name, e_mail, role) VALUES (?, ?, ?, ?, ?, ?)";
             preparedStatement = connection.prepareStatement(SQL_ADD_USER);
 
             preparedStatement.setString(1, user.getLogin());
@@ -46,7 +45,6 @@ public class UserDAOImpl implements UserDAO {
                     preparedStatement.close();
                 }
             }catch (SQLException e){
-                System.out.println("SQL exception occurred during add client");
                 e.printStackTrace();
             }
         }
@@ -55,7 +53,6 @@ public class UserDAOImpl implements UserDAO {
     @Override
     public List<User> getUsers() {
         List users = null;
-//        String sql = "SELECT * FROM \"user\"";
 
         try(Connection connection =  HikariCPDataSource.getConnection();
             Statement statement = connection.createStatement();
@@ -65,18 +62,15 @@ public class UserDAOImpl implements UserDAO {
             e.printStackTrace();
             System.out.println("Exception");
         }
-
         return users;
     }
 
 
     @Override
     public User getById(Long id) {
-        String sql = "SELECT * FROM \"user\" WHERE id = ?";
         User user = new User();
-
         try(Connection connection = HikariCPDataSource.getConnection();
-            PreparedStatement  preparedStatement = connection.prepareStatement(sql)){
+            PreparedStatement  preparedStatement = connection.prepareStatement(SQL_GET_USER_BY_ID)){
 
             preparedStatement.setLong(1,id);
 
@@ -100,10 +94,9 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public void update(User user) {
-//        String sql = "UPDATE \"user\" SET id = ?, login = ?, password = ?, first_name = ?, last_name = ?, e_mail = ?, role = ?";
+
         try(Connection connection = HikariCPDataSource.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(SQL_YSER_UPDATE)){
-//            preparedStatement.setLong(1, user.getId());
             preparedStatement.setString(1, user.getLogin());
             preparedStatement.setString(2, user.getPassword());
             preparedStatement.setString(3, user.getFirstName());
@@ -121,7 +114,6 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public void remove(Long id) {
-//        String sql = "DELETE FROM \"user\" WHERE id = ?";
         try(Connection connection = HikariCPDataSource.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(SQL_USER_REMOVE)){
             preparedStatement.setLong(1, id);
@@ -134,7 +126,6 @@ public class UserDAOImpl implements UserDAO {
 
 
     public User getUserByLoginPassword(String name, String password){
-//        String sql = "SELECT * FROM \"user\" WHERE login = ? AND password = ?";
         User user = new User();
 
         try(Connection connection = HikariCPDataSource.getConnection();

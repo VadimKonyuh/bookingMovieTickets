@@ -4,7 +4,7 @@ import com.vironIt.entity.Cinema;
 
 import java.util.List;
 
-public interface CinemaDAO  {
+public interface CinemaDAO{
 
      Cinema find(Integer id);
 

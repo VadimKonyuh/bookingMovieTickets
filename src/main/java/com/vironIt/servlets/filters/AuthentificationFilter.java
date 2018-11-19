@@ -25,13 +25,10 @@ public class AuthentificationFilter implements Filter {
 
         String uri = req.getRequestURI();
         this.context.log("Requested Resource::"+uri);
-//        res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
-//        res.setHeader("Pragma", "no-cache"); // HTTP 1.0.
-//        res.setDateHeader("Expires", 0); // Proxies.
+
 
         HttpSession session = req.getSession(false);
         if(session == null ){
-//            System.out.println("session = null from auth");
             req.setAttribute("error", "session is ended from filter");
             req.getRequestDispatcher("/login").forward(req, res);
         }else {

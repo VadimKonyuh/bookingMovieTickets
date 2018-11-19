@@ -9,6 +9,4 @@ public  class Cinema {
    private Integer id;
    private String name;
    private String address;
-   private Boolean isOpen;
-
 }

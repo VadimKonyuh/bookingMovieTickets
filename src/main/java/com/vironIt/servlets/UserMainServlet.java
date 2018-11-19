@@ -19,6 +19,5 @@ public class UserMainServlet extends HttpServlet {
             String name = user.getLogin();
         }
         req.getRequestDispatcher("user.jsp").forward(req, resp);
-
     }
 }

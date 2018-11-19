@@ -1,6 +1,6 @@
 package com.vironIt.servlets;
 
-import com.vironIt.db.dao.impl.UserDAOImpl;
+
 import com.vironIt.entity.User;
 import com.vironIt.entity.enums.Role;
 import com.vironIt.service.UserService;
@@ -17,6 +17,9 @@ import java.util.regex.Pattern;
 
 @Slf4j
 public class RegistrationServlet extends HttpServlet{
+
+    public static final String REGEX_LOGIN = "^[а-яА-ЯёЁa-zA-Z0-9]+$";
+    public static final String REGEX_PASSWORD = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -43,10 +46,10 @@ public class RegistrationServlet extends HttpServlet{
         user.setRole(Role.USER);
         UserService userService = new UserService();
         if(!login.equals(null)){
-            Pattern p = Pattern.compile("^[а-яА-ЯёЁa-zA-Z0-9]+$");
+            Pattern p = Pattern.compile(REGEX_LOGIN);
             Matcher m = p.matcher(login);
             if (m.matches()){
-                p = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$");
+                p = Pattern.compile(REGEX_PASSWORD);
                 m = p.matcher(password);
                 if (m.matches()){
                     if (password.equals(password1) && login.length() > 4){
@@ -55,7 +58,6 @@ public class RegistrationServlet extends HttpServlet{
                         req.setAttribute("user", user);
                         req.setAttribute("name", login);
                         log("redirect to  user.jsp from registration.jsp");
-//                    resp.sendRedirect("user.jsp");
                         req.getRequestDispatcher("user.jsp").forward(req, resp);
                     }else {
                         req.setAttribute("error", "login < 5 or Passwords do not match");

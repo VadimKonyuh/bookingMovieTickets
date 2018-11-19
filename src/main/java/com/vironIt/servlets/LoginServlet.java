@@ -1,18 +1,10 @@
 package com.vironIt.servlets;
 
-
-import com.vironIt.db.dao.impl.UserDAOImpl;
 import com.vironIt.entity.User;
 import com.vironIt.service.UserService;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.*;
-
-
 import javax.servlet.ServletException;
 import java.io.IOException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 
 public class LoginServlet extends HttpServlet{
@@ -37,7 +29,7 @@ public class LoginServlet extends HttpServlet{
             HttpSession session = req.getSession();
             session.setAttribute("user",user);
             session.setAttribute("error","");
-            session.setMaxInactiveInterval(60);
+            session.setMaxInactiveInterval(30 * 60);
             Cookie loginCookie = new Cookie("login", login);
             loginCookie.setMaxAge(30*60);
             resp.addCookie(loginCookie);
@@ -46,7 +38,9 @@ public class LoginServlet extends HttpServlet{
                 page = "/home";
             }else {
                 page = "user.jsp";
+
             }
+
             resp.sendRedirect(page);
         }else{
                 error = "You entered an incorrect username or password";

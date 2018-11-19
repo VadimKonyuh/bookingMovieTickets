@@ -8,8 +8,7 @@ import java.util.List;
 public class UserService {
     private UserDAO userDAO = new UserDAOImpl();
 
-    public UserService(){
-    }
+    public UserService(){}
 
     public void addUser(User user){this.userDAO.addUser(user); }
 
@@ -25,7 +24,5 @@ public class UserService {
 
     public User getUserById(Long id){ return this.userDAO.getById(id);}
 
-    public User getUserByLoginPassword(String name, String password){
-        return this.userDAO.getUserByLoginPassword(name, password);
-    }
+    public User getUserByLoginPassword(String name, String password){return this.userDAO.getUserByLoginPassword(name, password);}
 }

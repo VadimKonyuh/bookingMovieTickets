@@ -1,7 +1,6 @@
 package com.vironIt.db.dao.impl;
 
 import com.vironIt.connectionpool.HikariCPDataSource;
-import com.vironIt.db.dao.BaseDAO;
 import com.vironIt.db.dao.CinemaDAO;
 import com.vironIt.entity.Cinema;
 
@@ -11,9 +10,11 @@ import java.util.List;
 
 public class CinemaDAOImpl implements CinemaDAO {
 
-    public static final String SQL_FIND_CINEMA = "SELECT * FROM cinema WHERE id = ?";
-    public static final String SQL_CREATE_CINEMA = "INSERT INTO cinema (name, address, is_open) VALUES (?, ?, ?)";
-    public static final String SQL_CINEMA_UPDATE= "SELECT * FROM cinema WHERE (name = ?, address = ?, is_open = ?)";
+    public static final String SQL_FIND_CINEMA_BY_ID = "SELECT * FROM cinema WHERE id = ?";
+    public static final String SQL_FIND_CINEMA_BY_NAME = "SELECT * FROM cinema WHERE name = ?";
+    public static final String SQL_FIND_CINEMA_BY_NAME_ADDRESS = "SELECT * FROM cinema WHERE (name = ? AND address = ?)";
+    public static final String SQL_CINEMA_CREATE = "INSERT INTO cinema (name, address) VALUES (?, ?)";
+    public static final String SQL_CINEMA_UPDATE= "UPDATE  \"cinema\" SET name = ?, address = ? WHERE  id = ?";
     public static final String SQL_CINEMA_REMOVE = "DELETE FROM cinema WHERE id = ?";
     public static final String SQL_FIND_ALL = "SELECT * FROM cinema";
 
@@ -22,7 +23,7 @@ public class CinemaDAOImpl implements CinemaDAO {
         Cinema cinema = new Cinema();
 
         try(Connection connection = HikariCPDataSource.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(SQL_FIND_CINEMA);){
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL_FIND_CINEMA_BY_ID);){
 
             preparedStatement.setInt(1, id);
 
@@ -31,7 +32,6 @@ public class CinemaDAOImpl implements CinemaDAO {
                 cinema.setId(resultSet.getInt(1));
                 cinema.setName(resultSet.getString(2));
                 cinema.setAddress(resultSet.getString(3));
-                cinema.setIsOpen(resultSet.getBoolean(4));
             }
         }catch (Exception e){
             e.printStackTrace();
@@ -41,19 +41,54 @@ public class CinemaDAOImpl implements CinemaDAO {
     }
 
 
+    public Cinema findCinemaByName(String name){
+        Cinema cinema = new Cinema();
+
+        try(Connection connection = HikariCPDataSource.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL_FIND_CINEMA_BY_NAME);){
+
+            preparedStatement.setString(1, name);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()) {
+                cinema.setId(resultSet.getInt(1));
+                cinema.setName(resultSet.getString(2));
+                cinema.setAddress(resultSet.getString(3));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return cinema;
+    }
+
+
+    public Cinema findCinemaByNameAddress(String name, String address){
+        Cinema cinema = new Cinema();
+        try(Connection connection = HikariCPDataSource.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL_FIND_CINEMA_BY_NAME_ADDRESS);){
+            preparedStatement.setString(1, name);
+            preparedStatement.setString(2, address);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()) {
+                cinema.setId(resultSet.getInt(1));
+                cinema.setName(resultSet.getString(2));
+                cinema.setAddress(resultSet.getString(3));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return cinema;
+    }
+
 
     @Override
     public void create(Cinema cinema) {
         try(Connection connection = HikariCPDataSource.getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement(SQL_CREATE_CINEMA)) {
+        PreparedStatement preparedStatement = connection.prepareStatement(SQL_CINEMA_CREATE)) {
 
             preparedStatement.setString(1, cinema.getName());
             preparedStatement.setString(2, cinema.getAddress());
-            if (cinema.getIsOpen() != null) {
-                preparedStatement.setBoolean(3, cinema.getIsOpen());
-            }else {
-                preparedStatement.setBoolean(3, false);
-            }
             preparedStatement.executeUpdate();
         }catch (Exception e){
             e.printStackTrace();
@@ -68,7 +103,7 @@ public class CinemaDAOImpl implements CinemaDAO {
 
             preparedStatement.setString(1, cinema.getName());
             preparedStatement.setString(2, cinema.getAddress());
-            preparedStatement.setBoolean(3, cinema.getIsOpen());
+            preparedStatement.setInt(3, cinema.getId());
             preparedStatement.executeUpdate();
         }catch (SQLException e){
             e.printStackTrace();
@@ -77,16 +112,26 @@ public class CinemaDAOImpl implements CinemaDAO {
 
     @Override
     public void delete(Cinema cinema) {
-        //        String sql = "DELETE FROM \"user\" WHERE id = ?";
         try(Connection connection = HikariCPDataSource.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(SQL_CINEMA_REMOVE)){
+
             preparedStatement.setInt(1, cinema.getId());
+            preparedStatement.executeUpdate();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
+
+    public void deleteCinemaById(Integer id){
+        try(Connection connection = HikariCPDataSource.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(SQL_CINEMA_REMOVE)){
+            preparedStatement.setInt(1, id);
 
             preparedStatement.executeUpdate();
         }catch (SQLException e){
             e.printStackTrace();
         }
-
     }
 
 
@@ -94,7 +139,6 @@ public class CinemaDAOImpl implements CinemaDAO {
     @Override
     public List<Cinema> findAll() {
         List cinemas = null;
-//        String sql = "SELECT * FROM cinema";
         try(Connection connection =  HikariCPDataSource.getConnection();
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(SQL_FIND_ALL)){
@@ -126,7 +170,6 @@ public class CinemaDAOImpl implements CinemaDAO {
             cinema.setId(resultSet.getInt(1));
             cinema.setName(resultSet.getString(2));
             cinema.setAddress(resultSet.getString(3));
-            cinema.setIsOpen(resultSet.getBoolean(4));
             cinemas.add(cinema);
         }
         return cinemas;
