@@ -1,15 +1,12 @@
 package com.vironIt.servlets;
 
-import com.vironIt.db.dao.impl.CinemaDAOImpl;
+import com.vironIt.db.dao.impl.CinemaDAOImplHibernate;
 import com.vironIt.entity.Cinema;
 import com.vironIt.entity.User;
 import com.vironIt.service.CinemaService;
-import lombok.extern.log4j.Log4j;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -30,19 +27,13 @@ public class HomeAdminServlet extends HttpServlet{
         }
 
         HttpSession session = req.getSession();
-//        if (session == null){
-//            resp.sendRedirect("/login");
-//        }
-
         User user = (User) session.getAttribute("user");
         String error = (String) session.getAttribute("error");
-
-
         if (user != null && user.getLogin() != null){
             name = user.getLogin();
-            CinemaDAOImpl cinemaDAO = new CinemaDAOImpl();
+            CinemaDAOImplHibernate cinemaDAOImplHibernate = new CinemaDAOImplHibernate();
             List<Cinema> cinemaList;
-            cinemaList =  cinemaDAO.findAll();
+            cinemaList =  cinemaDAOImplHibernate.findAll();
             req.setAttribute("CinemaList",cinemaList);
             req.setAttribute("name", name);
             req.getRequestDispatcher("admin.jsp").forward(req, resp);

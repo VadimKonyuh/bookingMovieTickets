@@ -1,10 +1,13 @@
 package com.vironIt.entity.enums;
 
-public enum  Role {
-    GUEST(0),
-    USER(1),
-        ADMIN(2);
+import javax.persistence.Entity;
 
-        Role(int i) {
-        }
-        }
+//@Entity
+public enum  Role {
+    GUEST("GUEST"),
+    USER("USER"),
+    ADMIN("ADMIN");
+
+    Role(String role) {
+    }
+}

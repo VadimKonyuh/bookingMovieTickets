@@ -1,28 +1,36 @@
 package com.vironIt.service;
 
-import com.vironIt.db.dao.impl.CinemaDAOImpl;
+//import com.vironIt.db.dao.impl.CinemaDAOImpl;
+import com.vironIt.db.dao.impl.CinemaDAOImplHibernate;
 import com.vironIt.entity.Cinema;
 
 public class CinemaService {
-    private CinemaDAOImpl cinemaDAO = new CinemaDAOImpl();
+    private CinemaDAOImplHibernate cinemaDAOImplHibernate = new CinemaDAOImplHibernate();
 
     public CinemaService(){}
 
     public void addCinema(Cinema cinema){
-        this.cinemaDAO.create(cinema);
+        this.cinemaDAOImplHibernate.create(cinema);
     }
 
     public void deleteCinemaById(Integer id){
-        this.cinemaDAO.deleteCinemaById(id);
+        Cinema cinema = cinemaDAOImplHibernate.findById(id);
+        cinemaDAOImplHibernate.delete(cinema);
+    }
+
+    public Cinema getCinemaById(Integer id){
+        return this.cinemaDAOImplHibernate.findById(id);
     }
 
     public Cinema getCinemaByName(String name){
-        return this.cinemaDAO.findCinemaByName(name);
+        return this.cinemaDAOImplHibernate.findCinemaByName(name);
     }
 
-    public Cinema getCinemaByNameAddress(String name, String address){return this.cinemaDAO.findCinemaByNameAddress(name, address);}
+    public Cinema getCinemaByNameAddress(String name, String address){
+        return this.cinemaDAOImplHibernate.findCinemaByNameAddress(name, address);
+    }
 
     public void updateCinema(Cinema cinema){
-        this.cinemaDAO.update(cinema);
+        this.cinemaDAOImplHibernate.update(cinema);
     }
 }

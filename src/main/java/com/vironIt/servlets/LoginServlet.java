@@ -11,19 +11,17 @@ public class LoginServlet extends HttpServlet{
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
         req.getRequestDispatcher("login.jsp").forward(req, resp);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String error = null;
-        User user = null;
         String page = "";
         UserService userService = new UserService();
         String login = req.getParameter("login");
         String password = req.getParameter("password");
-        user = userService.getUserByLoginPassword(login, password);
+        User user = userService.getUserByLoginPassword(login, password);
 
         if (login.equals(user.getLogin()) && password.equals(user.getPassword())){
             HttpSession session = req.getSession();
@@ -38,9 +36,7 @@ public class LoginServlet extends HttpServlet{
                 page = "/home";
             }else {
                 page = "user.jsp";
-
             }
-
             resp.sendRedirect(page);
         }else{
                 error = "You entered an incorrect username or password";

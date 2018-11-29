@@ -1,28 +1,38 @@
 package com.vironIt.service;
 
-import com.vironIt.db.dao.UserDAO;
-import com.vironIt.db.dao.impl.UserDAOImpl;
+import com.vironIt.db.dao.impl.UserDAOImplHibernate;
 import com.vironIt.entity.User;
 import java.util.List;
 
 public class UserService {
-    private UserDAO userDAO = new UserDAOImpl();
+    private UserDAOImplHibernate userDAOImplHibernate= new UserDAOImplHibernate();
 
-    public UserService(){}
+    public UserService(){
 
-    public void addUser(User user){this.userDAO.addUser(user); }
+    }
+
+    public void addUser(User user){
+        this.userDAOImplHibernate.create(user);
+    }
 
     public void updateUser(User user){
-        this.userDAO.update(user);
+        this.userDAOImplHibernate.update(user);
     }
 
-    public List<User> getUsers(){ return this.userDAO.getUsers();}
+    public List<User> getUsers(){
+        return  this.userDAOImplHibernate.findAll();
+    }
 
     public void removeUser(Long id){
-        this.userDAO.remove(id);
+        this.userDAOImplHibernate.removeUserById(id);
     }
 
-    public User getUserById(Long id){ return this.userDAO.getById(id);}
 
-    public User getUserByLoginPassword(String name, String password){return this.userDAO.getUserByLoginPassword(name, password);}
+    public User getUserById(Long id){
+        return this.userDAOImplHibernate.findById(id);
+    }
+
+    public User getUserByLoginPassword(String login, String password){
+        return this.userDAOImplHibernate.getUserByLoginPassword(login, password);
+    }
 }

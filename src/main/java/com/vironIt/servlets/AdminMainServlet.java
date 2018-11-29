@@ -25,37 +25,43 @@ public class AdminMainServlet extends HttpServlet {
         String button = req.getParameter("button");
         CinemaService cinemaService = new CinemaService();
         Cinema cinema = new Cinema();
-
-
         if (!button.equals(null)){
             switch (button){
                 case "add cinema" :
                     String name = req.getParameter("name");
                     String address = req.getParameter("address");
-                    if (!(cinemaService.getCinemaByName(name).getName() == null)){
-                        cinema.setName(name);
-                        cinema.setAddress(address);
-                        cinemaService.addCinema(cinema);
+                    if (name.length() <= 30 && address.length() <= 30) {
+                            cinema.setName(name);
+                            cinema.setAddress(address);
+                            cinemaService.addCinema(cinema);
+                            HttpSession session = req.getSession(false);
+                            session.setAttribute("error", "Cinema was added");
+                    }else{
                         HttpSession session = req.getSession(false);
-                        session.setAttribute("error", "cinema was added");
-                    }else {
-                        HttpSession session = req.getSession(false);
-                        session.setAttribute("error", "You can not add film with name null");
+                        session.setAttribute("error", "Name or address more then 30 symbol");
                     }
                     break;
                 case "cinema update":
-                    String oldName = req.getParameter("oldName");
-                    String oldAddress = req.getParameter("oldAddress");
-                    cinema = cinemaService.getCinemaByNameAddress(oldName, oldAddress);
-                    if (!(cinema.getName() == null)){
+                    Integer cinemaId = Integer.parseInt(req.getParameter("cinemaId"));
+                    cinema = cinemaService.getCinemaById(cinemaId);
                         String newName = req.getParameter("newName");
                         String newAddress = req.getParameter("newAddress");
-                        cinema.setName(newName);
-                        cinema.setAddress(newAddress);
-                        cinemaService.updateCinema(cinema);
-                        HttpSession session = req.getSession(false);
-                        session.setAttribute("error", "cinema object was update");
-                    }
+                        if (newName.length() <= 30){
+                            if (!newName.equals(null) && !newAddress.equals(null)){
+                                cinema.setName(newName);
+                                cinema.setAddress(newAddress);
+                                cinemaService.updateCinema(cinema);
+                                HttpSession session = req.getSession(false);
+                                session.setAttribute("error", "Cinema object was update");
+                            }else {
+                                HttpSession session = req.getSession(false);
+                                session.setAttribute("error", "Cinema name or address are empty");
+                            }
+                        }else {
+                            HttpSession session = req.getSession(false);
+                            session.setAttribute("error", "Cinema name or address more then 30 symbol");
+                        }
+//                    }
                     break;
             }
         }

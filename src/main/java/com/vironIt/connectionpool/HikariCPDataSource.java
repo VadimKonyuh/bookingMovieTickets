@@ -13,16 +13,6 @@ public class HikariCPDataSource {
     private static HikariConfig config = new HikariConfig();
     private static HikariDataSource ds;
 
-//    static {
-//        config.setDriverClassName("org.postgresql.Driver");
-//        config.setJdbcUrl("jdbc:postgresql:booking_cinema_tickets");
-//        config.setUsername("postgres");
-//        config.setPassword("postgres");
-//        config.addDataSourceProperty("cachePrepStmts", "true");
-//        config.addDataSourceProperty("prepStmtCacheSize", "250");
-//        config.addDataSourceProperty("prepStmtCacheSqlLimit", "2048");
-//        ds = new HikariDataSource(config);
-//    }
     static String propFileName = "config.properties";
     static {
         Properties properties = new Properties();
@@ -40,7 +30,6 @@ public class HikariCPDataSource {
         }catch (Exception e){
             e.printStackTrace();
         }
-
     }
 
     public static Connection getConnection() throws SQLException {

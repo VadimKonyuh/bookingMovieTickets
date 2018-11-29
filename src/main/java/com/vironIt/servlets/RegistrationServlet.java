@@ -48,7 +48,7 @@ public class RegistrationServlet extends HttpServlet{
         if(!login.equals(null)){
             Pattern p = Pattern.compile(REGEX_LOGIN);
             Matcher m = p.matcher(login);
-            if (m.matches()){
+            if (m.matches() && login.length() <= 30){
                 p = Pattern.compile(REGEX_PASSWORD);
                 m = p.matcher(password);
                 if (m.matches()){
