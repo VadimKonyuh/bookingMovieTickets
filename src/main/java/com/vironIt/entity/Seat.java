@@ -25,6 +25,7 @@ public class Seat {
     @Column(name = "is_free")
     private Boolean isFree;
 
-    @OneToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cinema_id")
     private Cinema cinema;
 }

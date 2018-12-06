@@ -1,11 +1,12 @@
 package com.vironIt.db.dao;
 
 
+import com.vironIt.utils.JPAUtility;
 import javax.persistence.EntityManager;
 import java.util.List;
 
 
-public abstract class AbstractHibernateDAO<T> {
+public abstract class AbstractHibernateDAO<T, K extends Number> {
     private Class entityClass;
     private EntityManager entityManager;
 
@@ -17,10 +18,10 @@ public abstract class AbstractHibernateDAO<T> {
         this.entityClass = entityClass;
     }
 
-    public T findById(long id) {
+    public T findById(K id) {
         EntityManager entityManager = JPAUtility.getEntityManager();
         entityManager.getTransaction().begin();
-        T t = (T) entityManager.find(entityClass,(int) id);
+        T t = (T) entityManager.find(entityClass, id);
         entityManager.getTransaction().commit();
         return t;
     }

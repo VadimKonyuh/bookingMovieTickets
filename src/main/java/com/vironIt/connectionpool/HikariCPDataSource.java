@@ -13,7 +13,7 @@ public class HikariCPDataSource {
     private static HikariConfig config = new HikariConfig();
     private static HikariDataSource ds;
 
-    static String propFileName = "config.properties";
+    static String propFileName = "database.properties";
     static {
         Properties properties = new Properties();
         ClassLoader classLoader = Thread.currentThread().getContextClassLoader();

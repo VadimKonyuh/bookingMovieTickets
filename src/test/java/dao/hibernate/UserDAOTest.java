@@ -1,6 +1,6 @@
 package dao.hibernate;
 
-import com.vironIt.db.dao.JPAUtility;
+import com.vironIt.utils.JPAUtility;
 import com.vironIt.entity.User;
 import com.vironIt.entity.enums.Role;
 import org.junit.Before;

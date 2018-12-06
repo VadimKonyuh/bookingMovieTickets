@@ -2,7 +2,6 @@ package com.vironIt.servlets;
 
 import com.vironIt.entity.Cinema;
 import com.vironIt.service.CinemaService;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;

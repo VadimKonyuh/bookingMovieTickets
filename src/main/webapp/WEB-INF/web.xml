@@ -26,7 +26,6 @@
         <filter-name>AuthenticationFilter</filter-name>
         <servlet-name>homeServlet</servlet-name>
         <servlet-name>AdminMainServlet</servlet-name>
-        <!--<url-pattern>loginSuccess*</url-pattern>-->
     </filter-mapping>
 
     <welcome-file-list>

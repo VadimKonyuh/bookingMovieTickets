@@ -25,11 +25,4 @@ public class Genre {
 
     @ManyToMany
     private List<Movie> movies = new ArrayList<>();
-
-//    @ManyToMany(fetch = FetchType.LAZY,
-//            cascade = {
-//                    CascadeType.PERSIST,
-//                    CascadeType.MERGE
-//            },
-//            mappedBy = "genres")
 }

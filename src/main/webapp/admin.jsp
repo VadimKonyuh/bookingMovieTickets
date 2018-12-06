@@ -40,12 +40,8 @@
                         </c:forEach>
                     </select>
                 </td>
-                <%--<td><input type="text" name="oldName"></td>--%>
             </tr>
-            <%--<tr>--%>
-                <%--<td>old address</td>--%>
-                <%--<td><input type="text" name="oldAddress"></td>--%>
-            <%--</tr>--%>
+
             <tr>
                 <td>new Name</td>
                 <td><input type="text" name="newName"></td>
@@ -59,14 +55,6 @@
             </tr>
         </table>
     </form>
-    <%--<form>--%>
-        <%--<select name="id_cinema">--%>
-            <%--<option disabled>Выберите кинотеатр</option>--%>
-            <%--<c:forEach items="${CinemaList}" var="cinema">--%>
-                <%--<option value=${cinema.id} >${cinema.name} ${cinema.address}</option>--%>
-            <%--</c:forEach>--%>
-        <%--</select>--%>
-    <%--</form>--%>
 
     <form action="LogoutServlet" method="post">
         <input type="submit" value="Logout" >

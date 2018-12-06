@@ -1,4 +1,4 @@
-package com.vironIt.db.dao;
+package com.vironIt.utils;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

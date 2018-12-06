@@ -28,7 +28,6 @@
             <version>2.7.8</version>
         </dependency>
 
-
         <dependency>
             <groupId> org.apache.cassandra</groupId>
             <artifactId>cassandra-all</artifactId>
@@ -51,12 +50,12 @@
             <artifactId>slf4j-api</artifactId>
             <version>1.7.5</version>
         </dependency>
+
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <version>1.6.4</version>
         </dependency>
-
 
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -76,15 +75,12 @@
             <artifactId>hibernate-core</artifactId>
             <version>5.3.7.Final</version>
         </dependency>
-
-        <!-- for JPA, use hibernate-entitymanager instead of hibernate-core -->
+        
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
             <version>5.3.7.Final</version>
         </dependency>
-
-
     </dependencies>
 
     <build>
@@ -99,5 +95,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

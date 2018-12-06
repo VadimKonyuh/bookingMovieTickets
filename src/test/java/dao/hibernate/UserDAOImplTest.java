@@ -1,14 +1,9 @@
 package dao.hibernate;
 
-import com.vironIt.db.dao.AbstractHibernateDAO;
-import com.vironIt.db.dao.JPAUtility;
-import com.vironIt.db.dao.UserDAOHibernate;
 import com.vironIt.db.dao.impl.UserDAOImplHibernate;
 import com.vironIt.entity.User;
 import org.junit.Before;
 import org.junit.Test;
-
-import javax.persistence.EntityManager;
 
 public class UserDAOImplTest {
 
@@ -23,7 +18,7 @@ public class UserDAOImplTest {
 
     @Test
     public void findUser(){
-        userDAOImplHibernate.findById(50);
+        userDAOImplHibernate.findById((long) 50);
     }
 
     @Test
@@ -35,7 +30,7 @@ public class UserDAOImplTest {
 
     @Test
     public void updateUser(){
-        User user1 = userDAOImplHibernate.findById(68);
+        User user1 = userDAOImplHibernate.findById((long) 68);
         user1.setLogin("newTestHibernateLogin");
         userDAOImplHibernate.update(user1);
     }

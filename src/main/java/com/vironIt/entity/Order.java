@@ -17,14 +17,17 @@ public class Order {
     @GeneratedValue(strategy = SEQUENCE, generator = "order_id_seq")
     private Long id;
 
-    @Column(name = "user_id")
-    private Long userId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User userId;
 
-    @Column(name = "distribution_id")
-    private Long distributionId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "distribution_id")
+    private Distribution distributionId;
 
-    @Column(name = "place_id")
-    private Long placeId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "seat_id")
+    private Seat seatId;
 
     @Column(name = "booking_date")
     private Date date;

@@ -1,6 +1,6 @@
 package dao.hibernate;
 
-import com.vironIt.db.dao.JPAUtility;
+import com.vironIt.utils.JPAUtility;
 import com.vironIt.entity.Genre;
 import com.vironIt.entity.Movie;
 import org.junit.Test;

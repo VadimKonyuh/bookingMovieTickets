@@ -1,19 +1,13 @@
 package com.vironIt.entity;
 
-import com.sun.xml.internal.ws.developer.SchemaValidation;
 import com.vironIt.entity.enums.Role;
 import lombok.Data;
 import javax.persistence.*;
-
-import java.io.Serializable;
-
-import static javax.persistence.GenerationType.IDENTITY;
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @Data
 @Entity
 @Table(name = "user", schema = "public")
-//@SchemaValidation()
 public class User{
 
     @Id

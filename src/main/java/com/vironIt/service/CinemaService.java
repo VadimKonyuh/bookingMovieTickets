@@ -1,6 +1,5 @@
 package com.vironIt.service;
 
-//import com.vironIt.db.dao.impl.CinemaDAOImpl;
 import com.vironIt.db.dao.impl.CinemaDAOImplHibernate;
 import com.vironIt.entity.Cinema;
 
