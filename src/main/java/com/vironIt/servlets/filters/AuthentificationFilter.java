@@ -1,12 +1,14 @@
 package com.vironIt.servlets.filters;
 
 import javax.servlet.*;
+import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import static jdk.nashorn.internal.runtime.regexp.joni.Config.log;
 
+@WebFilter()
 public class AuthentificationFilter implements Filter {
 
     private ServletContext context;
@@ -24,11 +26,11 @@ public class AuthentificationFilter implements Filter {
 
         String uri = req.getRequestURI();
         this.context.log("Requested Resource::"+uri);
-
+        System.out.println("In intercepter");
 
         HttpSession session = req.getSession(false);
         if(session == null ){
-            req.setAttribute("error", "session is ended from filter");
+            req.setAttribute("error", "session is ended from intercepter");
             req.getRequestDispatcher("/login").forward(req, res);
         }else {
             log.println("doFilter");
