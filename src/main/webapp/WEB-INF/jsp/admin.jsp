@@ -50,7 +50,7 @@
     </table>
 </form>
 
-<form action="LogoutServlet" method="post">
+<form action="/logout" method="get">
     <input type="submit" value="Logout" >
 </form>
 <form>
@@ -82,4 +82,3 @@
     </center>
 </form>
 </body>
-

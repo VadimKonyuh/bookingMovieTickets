@@ -76,9 +76,9 @@
                     </tr>
                 </table>
             </c:forEach>
-                <form action="home/admin" method="post">
-                    <input type="submit" value="Delete cinemas" >
-                </form>
+            <form action="/admin" method="post">
+                <input type="submit" value="Delete cinemas" >
+            </form>
         </center>
     </form>
 </body>
