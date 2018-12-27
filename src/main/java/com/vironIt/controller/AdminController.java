@@ -40,58 +40,48 @@ public class AdminController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("admin");
 
-        Log.info("-1");
         String button = req.getParameter("button");
-        Log.info("0");
         CinemaService cinemaService = new CinemaService();
         Cinema cinema = new Cinema();
         if (!button.equals(null)){
             switch (button){
                 case "add cinema" :
                     String name = req.getParameter("name");
-                    Log.info("1");
                     String address = req.getParameter("address");
-                    Log.info("2");
                     if (name.length() <= 30 && address.length() <= 30) {
-                        Log.info("3");
                         cinema.setName(name);
-                        Log.info("4");
                         cinema.setAddress(address);
-                        Log.info("5");
                         cinemaService.addCinema(cinema);
-                        Log.info("6");
                         HttpSession session = req.getSession(false);
-                        Log.info("7");
                         session.setAttribute("error", "Cinema was added");
                     }else{
                         HttpSession session = req.getSession(false);
                         session.setAttribute("error", "Name or address more then 30 symbol");
                     }
                     break;
-//                case "cinema update":
-//                    Integer cinemaId = Integer.parseInt(req.getParameter("cinemaId"));
-//                    cinema = cinemaService.getCinemaById(cinemaId);
-//                    String newName = req.getParameter("newName");
-//                    String newAddress = req.getParameter("newAddress");
-//                    if (newName.length() <= 30){
-//                        if (!newName.equals(null) && !newAddress.equals(null)){
-//                            cinema.setName(newName);
-//                            cinema.setAddress(newAddress);
-//                            cinemaService.updateCinema(cinema);
-//                            HttpSession session = req.getSession(false);
-//                            session.setAttribute("error", "Cinema object was update");
-//                        }else {
-//                            HttpSession session = req.getSession(false);
-//                            session.setAttribute("error", "Cinema name or address are empty");
-//                        }
-//                    }else {
-//                        HttpSession session = req.getSession(false);
-//                        session.setAttribute("error", "Cinema name or address more then 30 symbol");
-//                    }
-//                    break;
+                case "cinema update":
+                    Integer cinemaId = Integer.parseInt(req.getParameter("cinemaId"));
+                    cinema = cinemaService.getCinemaById(cinemaId);
+                    String newName = req.getParameter("newName");
+                    String newAddress = req.getParameter("newAddress");
+                    if (newName.length() <= 30){
+                        if (!newName.equals(null) && !newAddress.equals(null)){
+                            cinema.setName(newName);
+                            cinema.setAddress(newAddress);
+                            cinemaService.updateCinema(cinema);
+                            HttpSession session = req.getSession(false);
+                            session.setAttribute("error", "Cinema object was update");
+                        }else {
+                            HttpSession session = req.getSession(false);
+                            session.setAttribute("error", "Cinema name or address are empty");
+                        }
+                    }else {
+                        HttpSession session = req.getSession(false);
+                        session.setAttribute("error", "Cinema name or address more then 30 symbol");
+                    }
+                    break;
             }
         }
-
         model.addAttribute("user", getPrincipal());
         return modelAndView;
     }

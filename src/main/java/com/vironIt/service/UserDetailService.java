@@ -3,6 +3,8 @@ package com.vironIt.service;
 import java.util.ArrayList;
 import java.util.List;
 
+
+import org.mortbay.log.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -25,9 +27,9 @@ public class UserDetailService implements UserDetailsService{
     public UserDetails loadUserByUsername(String ssoId)
             throws UsernameNotFoundException {
         User user = userService.getUserByLogin(ssoId);
-        System.out.println("User : "+user);
+        Log.info("User : " + user);
         if(user==null){
-            System.out.println("User not found");
+            Log.info("User not found");
             throw new UsernameNotFoundException("Username not found");
         }
         return new org.springframework.security.core.userdetails.User(user.getLogin(), user.getPassword(),
@@ -39,8 +41,7 @@ public class UserDetailService implements UserDetailsService{
         List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 
         authorities.add(new SimpleGrantedAuthority("ROLE_" + user.getRole().toString()));
-
-        System.out.print("authorities :"+authorities);
+        Log.info("authorities :"+authorities);
         return authorities;
     }
 }

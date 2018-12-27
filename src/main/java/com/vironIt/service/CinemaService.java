@@ -6,7 +6,9 @@ import com.vironIt.entity.Cinema;
 public class CinemaService {
     private CinemaDAOImplHibernate cinemaDAOImplHibernate = new CinemaDAOImplHibernate();
 
-    public CinemaService(){}
+    public CinemaService(){
+
+    }
 
     public void addCinema(Cinema cinema){
         this.cinemaDAOImplHibernate.create(cinema);
