@@ -2,8 +2,11 @@ package com.vironIt.service;
 
 import com.vironIt.db.dao.impl.UserDAOImplHibernate;
 import com.vironIt.entity.User;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 
+@Service("UserService")
 public class UserService {
     private UserDAOImplHibernate userDAOImplHibernate= new UserDAOImplHibernate();
 
@@ -27,12 +30,15 @@ public class UserService {
         this.userDAOImplHibernate.removeUserById(id);
     }
 
-
     public User getUserById(Long id){
         return this.userDAOImplHibernate.findById(id);
     }
 
     public User getUserByLoginPassword(String login, String password){
         return this.userDAOImplHibernate.getUserByLoginPassword(login, password);
+    }
+
+    public User getUserByLogin(String login){
+        return this.userDAOImplHibernate.getUserByLogin(login);
     }
 }

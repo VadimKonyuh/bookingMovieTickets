@@ -14,6 +14,7 @@ public class UserDAOImplHibernate extends AbstractHibernateDAO<User, Long> imple
 
     public static final String HQL_FIND_USER_BY_LOGIN_PASSWORD = "FROM User user WHERE login =:paramLogin AND user.password =: paramPassword";
     public static final String HQL_REMOVE_USER_BY_ID = "DELETE FROM User WHERE User.id =: paramId";
+    public static final String HQL_GET_USER_BY_LOGIN = "FROM User user WHERE login =: paramLogin";
 
     public UserDAOImplHibernate() {
         super(User.class);
@@ -35,6 +36,19 @@ public class UserDAOImplHibernate extends AbstractHibernateDAO<User, Long> imple
         return user;
     }
 
+    public User getUserByLogin(String login){
+        EntityManager entityManager = JPAUtility.getEntityManager();
+        Query query = entityManager.createQuery(HQL_GET_USER_BY_LOGIN);
+        query.setParameter("paramLogin",login);
+        List<User> list = query.getResultList();
+        User user;
+        if (list.isEmpty()){
+            user = new User();
+        }else {
+            user = list.get(0);
+        }
+        return user;
+    }
     public void removeUserById(Long id){
         EntityManager entityManager = JPAUtility.getEntityManager();
         Query query = entityManager.createQuery(HQL_REMOVE_USER_BY_ID);

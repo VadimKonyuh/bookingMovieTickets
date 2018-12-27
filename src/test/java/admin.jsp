@@ -1,20 +1,14 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: homepc
-  Date: 16.10.2018
-  Time: 15:33
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <head>
     <title>Title</title>
 </head>
 <body>
-    <h1>Hello ${name}</h1>
+    <h1>Hello ${user}</h1>
+    <a href="<c:url value="/logout" />">Logout</a>
     <form action="/home/admin" method="post">
         <table>
             <tr>
