@@ -1,8 +1,8 @@
 package dao.hibernate;
 
-import com.vironIt.utils.JPAUtility;
-import com.vironIt.entity.User;
-import com.vironIt.entity.enums.Role;
+import com.konyuh.utils.JPAUtility;
+import com.konyuh.entity.User;
+import com.konyuh.entity.enums.Role;
 import org.junit.Before;
 import org.junit.Test;
 import javax.persistence.EntityManager;

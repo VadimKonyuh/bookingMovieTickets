@@ -1,7 +1,7 @@
 package service;
 
-import com.vironIt.entity.Cinema;
-import com.vironIt.service.CinemaService;
+import com.konyuh.entity.Cinema;
+import com.konyuh.service.CinemaService;
 import org.junit.Before;
 import org.junit.Test;
 

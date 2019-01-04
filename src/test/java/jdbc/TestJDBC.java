@@ -1,7 +1,7 @@
 package jdbc;
 
-import com.vironIt.entity.User;
-import com.vironIt.service.UserService;
+import com.konyuh.entity.User;
+import com.konyuh.service.UserService;
 
 import java.util.Iterator;
 import java.util.List;

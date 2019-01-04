@@ -1,7 +1,7 @@
 package service;
 
-import com.vironIt.entity.User;
-import com.vironIt.service.UserService;
+import com.konyuh.entity.User;
+import com.konyuh.service.UserService;
 import org.junit.Test;
 
 import java.util.Iterator;

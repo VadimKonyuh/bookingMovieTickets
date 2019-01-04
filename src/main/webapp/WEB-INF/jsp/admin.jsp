@@ -50,7 +50,7 @@
     </table>
 </form>
 
-<form action="/logout" method="get">
+<form action="/logout" method="get  ">
     <input type="submit" value="Logout" >
 </form>
 <form>

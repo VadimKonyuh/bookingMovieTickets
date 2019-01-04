@@ -1,6 +1,6 @@
 package jdbc;
 
-import com.vironIt.connectionpool.HikariCPDataSource;
+import com.konyuh.connectionpool.HikariCPDataSource;
 import org.junit.Test;
 //import org.junit.Test;
 

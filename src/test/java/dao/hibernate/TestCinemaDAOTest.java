@@ -1,9 +1,7 @@
 package dao.hibernate;
 
-import com.vironIt.db.dao.CinemaDAOHibernate;
-import com.vironIt.db.dao.impl.CinemaDAOImplHibernate;
-import com.vironIt.entity.Cinema;
-import com.vironIt.service.CinemaService;
+import com.konyuh.db.dao.impl.CinemaDAOImplHibernate;
+import com.konyuh.entity.Cinema;
 import org.junit.Before;
 import org.junit.Test;
 

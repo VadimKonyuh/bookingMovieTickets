@@ -1,7 +1,7 @@
 package dao.hibernate;
 
-import com.vironIt.db.dao.impl.UserDAOImplHibernate;
-import com.vironIt.entity.User;
+import com.konyuh.db.dao.impl.UserDAOImplHibernate;
+import com.konyuh.entity.User;
 import org.junit.Before;
 import org.junit.Test;
 

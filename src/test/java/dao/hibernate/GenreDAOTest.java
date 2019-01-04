@@ -1,8 +1,8 @@
 package dao.hibernate;
 
-import com.vironIt.utils.JPAUtility;
-import com.vironIt.entity.Genre;
-import com.vironIt.entity.Movie;
+import com.konyuh.utils.JPAUtility;
+import com.konyuh.entity.Genre;
+import com.konyuh.entity.Movie;
 import org.junit.Test;
 import javax.persistence.EntityManager;
 import java.util.ArrayList;
