@@ -4,10 +4,13 @@ import com.konyuh.db.dao.AbstractHibernateDAO;
 import com.konyuh.db.dao.CinemaDAOHibernate;
 import com.konyuh.utils.JPAUtility;
 import com.konyuh.entity.Cinema;
+import org.springframework.stereotype.Repository;
+
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.util.List;
 
+@Repository
 public class CinemaDAOImplHibernate extends AbstractHibernateDAO<Cinema, Integer> implements CinemaDAOHibernate{
 
     public static final String HQL_FIND_CINEMA_BY_Name = "FROM Cinema cinema WHERE name =:paramName";

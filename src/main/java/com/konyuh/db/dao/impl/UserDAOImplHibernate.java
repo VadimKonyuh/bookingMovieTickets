@@ -4,12 +4,14 @@ import com.konyuh.db.dao.AbstractHibernateDAO;
 import com.konyuh.utils.JPAUtility;
 import com.konyuh.db.dao.UserDAOHibernate;
 import com.konyuh.entity.User;
+import org.springframework.stereotype.Repository;
 
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.util.List;
 
+@Repository
 public class UserDAOImplHibernate extends AbstractHibernateDAO<User, Long> implements UserDAOHibernate{
 
     public static final String HQL_FIND_USER_BY_LOGIN_PASSWORD = "FROM User user WHERE login =:paramLogin AND user.password =: paramPassword";

@@ -2,11 +2,14 @@ package com.konyuh.service;
 
 import com.konyuh.db.dao.impl.CinemaDAOImplHibernate;
 import com.konyuh.entity.Cinema;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CinemaService {
-    private CinemaDAOImplHibernate cinemaDAOImplHibernate = new CinemaDAOImplHibernate();
+
+    @Autowired
+    private CinemaDAOImplHibernate cinemaDAOImplHibernate;
 
     public CinemaService(){
 

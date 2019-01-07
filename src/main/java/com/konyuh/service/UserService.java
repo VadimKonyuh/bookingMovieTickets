@@ -2,13 +2,16 @@ package com.konyuh.service;
 
 import com.konyuh.db.dao.impl.UserDAOImplHibernate;
 import com.konyuh.entity.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service("UserService")
 public class UserService {
-    private UserDAOImplHibernate userDAOImplHibernate= new UserDAOImplHibernate();
+
+    @Autowired
+    private UserDAOImplHibernate userDAOImplHibernate;
 
     public UserService(){
 
